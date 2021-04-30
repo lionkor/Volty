@@ -17,7 +17,7 @@
 #define _PRETTY_FUNCTION __FUNCSIG__
 #else
 #define _PRETTY_FUNCTION __func__
-#end
+#endif
 
 static const char* const ANSI_RESET = "\u001b[0m";
 
