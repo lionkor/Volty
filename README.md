@@ -9,6 +9,8 @@ A 2D cross-platform game engine written in C++20. Supports scripting with Lua an
 
 You'll need a C++ 20 capable compiler.
 
+See [CONTRIBUTING.md](https://github.com/lionkor/Volty/blob/master/CONTRIBUTING.md) for how to contribute.
+
 ## Scripting
 
 ### Lua
