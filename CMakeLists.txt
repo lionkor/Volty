@@ -108,6 +108,8 @@ target_link_libraries(Volty
         ${LUA_LIBRARIES}
         )
 
+target_compile_definitions(Volty PRIVATE WIN_EXPORT)
+
 add_executable(example examples/main.cpp)
 target_link_libraries(example Volty)
 target_include_directories(example PRIVATE include)
