@@ -40,7 +40,7 @@ void ResourceManager::reload_resfile() {
         }
         std::string filename(previous_newline, next_newline);
         if (!filename.empty()) {
-            LazyFile file(m_res_base_path / filename);
+            LazyFile file((m_res_base_path / filename).string());
             if (file.is_valid()) {
                 m_resources.insert_or_assign(filename, std::move(file));
                 report("loaded {}", filename);
