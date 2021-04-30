@@ -24,7 +24,7 @@ class DrawSurface {
     std::unordered_set<DrawablePointerWrapper> m_drawables;
 
 public:
-    DrawSurface(GameWindow& window);
+    explicit DrawSurface(GameWindow& window);
 
     void set_clear_color(sf::Color color) { m_clear_color = color; }
     const sf::Color& clear_color() const { return m_clear_color; }

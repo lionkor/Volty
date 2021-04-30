@@ -1,5 +1,7 @@
 #include "Drawable.h"
 
+#include <utility>
+
 #include "Core/GameWindow.h"
 
 #include "Utils/Random.h"
@@ -30,9 +32,9 @@ void Rectangle::update_internal_shape() {
     m_shape[3] = sf::Vertex(ext::sf::to_sf_vec2f(m_pos) + sf::Vector2f(0, float(m_size.y)), { m_color.r, m_color.g, m_color.b, m_color.a }, sf::Vector2f(0.0f, tex_coords.y - 1));
 }
 
-Rectangle::Rectangle(const vecd& pos, const vecd& size, double rotation)
-    : m_pos(pos)
-    , m_size(size)
+Rectangle::Rectangle(vecd pos, vecd size, double rotation)
+    : m_pos(std::move(pos))
+    , m_size(std::move(size))
     , m_rotation(rotation)
     , m_shape(sf::PrimitiveType::Quads, 4) {
     update_internal_shape();

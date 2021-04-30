@@ -10,14 +10,12 @@
 
 class Color;
 
-template<typename T>
-concept Numeric = std::is_integral<T>::value || std::is_floating_point<T>::value;
-
 namespace ext::sf {
-inline ::sf::Vector2f to_sf_vec2f(const vec<float>& f) {
+template<std::convertible_to<float> T>
+inline ::sf::Vector2f to_sf_vec2f(const vec<T>& f) {
     return ::sf::Vector2f(f.x, f.y);
 }
-template<Numeric T>
+template<std::convertible_to<float> T>
 inline ::sf::Vector2f to_sf_vec2f(T a, T b) {
     return ::sf::Vector2f(float(a), float(b));
 }
