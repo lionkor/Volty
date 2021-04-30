@@ -14,11 +14,7 @@ public:
     Event();
 
     void accept();
-    bool accepted() const;
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
+    [[nodiscard]] bool accepted() const;
 };
 
 #endif // EVENT_H

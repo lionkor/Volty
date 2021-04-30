@@ -5,8 +5,7 @@
 #include <boost/container/vector.hpp>
 #include <boost/range/algorithm_ext/erase.hpp>
 
-EventDispatcher::EventDispatcher() {
-}
+EventDispatcher::EventDispatcher() = default;
 
 void EventDispatcher::register_receiver(IEventReceiver& recv) {
     m_receivers.push_front(&recv);

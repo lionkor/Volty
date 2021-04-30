@@ -5,13 +5,7 @@ IEventReceiver::IEventReceiver(EventDispatcher& dispatcher)
     : m_dispatcher(dispatcher) {
 }
 
-IEventReceiver::~IEventReceiver() {
-}
-
-bool IEventReceiver::operator==(const IEventReceiver&) const {
-    NOTIMPL;
-    return false;
-}
+IEventReceiver::~IEventReceiver() = default;
 
 void IEventReceiver::handle(Event&) {
 }

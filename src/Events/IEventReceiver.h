@@ -10,14 +10,11 @@
 // Interfaces do not inherit from Object
 class IEventReceiver {
 private:
-    UUID m_uuid;
     EventDispatcher& m_dispatcher;
 
 public:
     explicit IEventReceiver(EventDispatcher& dispatcher);
     virtual ~IEventReceiver();
-
-    bool operator==(const IEventReceiver&) const;
 
     // Will reveice all events. Events received here are guaranteed to not yet be accepted.
     virtual void handle(Event&);
