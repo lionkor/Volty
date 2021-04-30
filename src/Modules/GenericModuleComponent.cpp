@@ -1,23 +1,6 @@
 #include "Modules/GenericModuleComponent.h"
 
-#ifdef __linux__
-#include <dlfcn.h>
-#define DLOPEN dlopen
-#define DLSYM dlsym
-#define DLCLOSE dlclose
-#define DLERROR dlerror
-#elif defined(WIN32)
-#include <windows.h>
-#define DLOPEN LoadLibrary
-#define DLSYM GetProcAddress
-#define DLCLOSE FreeLibrary
-#define DLERROR() "dll error"
-#else
-#error "platform not supported, please implement dll/so handling"
-#endif
-
 #include <chrono>
-#include <functional>
 #include <sys/stat.h>
 
 GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll_name)
@@ -91,7 +74,6 @@ GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll
         auto pos = action.world_position(window);
         on_mouse_move_fn({ pos.x, pos.y });
     };
-    //o_info("hello");
 }
 
 GenericModuleComponent::~GenericModuleComponent() {

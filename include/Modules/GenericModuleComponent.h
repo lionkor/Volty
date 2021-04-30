@@ -6,10 +6,28 @@
 #define INTERNAL
 #include "GenericModule.h"
 
+#ifdef __linux__
+#include <dlfcn.h>
+#define DLOPEN dlopen
+#define DLSYM dlsym
+#define DLCLOSE dlclose
+#define DLERROR dlerror
+#define DLHANDLE void*
+#elif defined(WIN32)
+#include <windows.h>
+#define DLOPEN LoadLibrary
+#define DLSYM GetProcAddress
+#define DLCLOSE FreeLibrary
+#define DLERROR() "dll error"
+#define DLHANDLE HMODULE
+#else
+#error "platform not supported, please implement dll/so handling"
+#endif
+
 class GenericModuleComponent : public Component {
     OBJNAME(Component)
 private:
-    void* m_dll_handle { nullptr };
+    DLHANDLE m_dll_handle {};
 
 protected:
     std::function<void(C_Entity*)> on_create_fn { nullptr };
@@ -22,7 +40,7 @@ protected:
 
 public:
     GenericModuleComponent(Entity& e, const std::string& dll_name);
-    ~GenericModuleComponent();
+    ~GenericModuleComponent() override;
 
     void on_update(float dt) override;
 };
