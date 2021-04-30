@@ -106,7 +106,7 @@ std::vector<uint8_t>* LazyFile::load() {
         m_data.resize(file_size);
 
         // open
-        FILE* c_file = std::fopen(m_path.native().c_str(), "rb");
+        FILE* c_file = std::fopen(m_path.string().c_str(), "rb");
 
         if (!c_file) {
             report_error("fopen {} failed with error: {}", m_path, std::strerror(errno));
