@@ -1,4 +1,4 @@
-﻿#include "Collider.h"
+﻿#include "Physics/Collider.h"
 
 Collider::Collider(const Collider::Shape& shape)
     : m_shape(shape) {

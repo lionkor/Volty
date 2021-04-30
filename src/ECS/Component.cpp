@@ -1,7 +1,7 @@
-﻿#include "Component.h"
+﻿#include "ECS/Component.h"
 #include "Core/Application.h"
 #include "Core/World.h"
-#include "Entity.h"
+#include "ECS/Entity.h"
 
 Component::Component(Entity& parent)
     : m_parent(parent)

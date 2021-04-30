@@ -1,5 +1,5 @@
-﻿#include "World.h"
-#include "Application.h"
+﻿#include "Core/World.h"
+#include "Core/Application.h"
 #include "ECS/Entity.h"
 #include "Physics/Ray.h"
 #include "Utils/DebugTools.h"

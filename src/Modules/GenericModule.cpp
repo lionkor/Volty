@@ -1,7 +1,7 @@
 #include "Utils/DebugTools.h"
 
 #define INTERNAL
-#include "GenericModule.h"
+#include "Modules/GenericModule.h"
 
 #include "Utils/DebugTools.h"
 

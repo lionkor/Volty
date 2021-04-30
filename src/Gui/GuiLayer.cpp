@@ -1,4 +1,4 @@
-#include "GuiLayer.h"
+#include "Gui/GuiLayer.h"
 #include "Core/Application.h"
 
 GuiLayer::GuiLayer(Application& app)

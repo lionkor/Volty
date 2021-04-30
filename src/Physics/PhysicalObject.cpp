@@ -1,4 +1,4 @@
-﻿#include "PhysicalObject.h"
+﻿#include "Physics/PhysicalObject.h"
 #include "Core/World.h"
 
 PhysicalObject::PhysicalObject(const vecd pos, const vecd size, World& world)

@@ -1,7 +1,7 @@
-﻿#include "GameWindow.h"
-#include "Application.h"
+﻿#include "Core/GameWindow.h"
+#include "Core/Application.h"
 #include "ECS/Entity.h"
-#include "HID.h"
+#include "Core/HID.h"
 #include "Utils/DebugTools.h"
 
 GameWindow::GameWindow(Application& app, const std::string& title, sf::Vector2u size, bool fullscreen)

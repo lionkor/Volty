@@ -1,5 +1,5 @@
-#include "UDPClient.h"
-#include "UDPServer.h"
+#include "Network/UDPClient.h"
+#include "Network/UDPServer.h"
 
 #include "Utils/Managed.h"
 

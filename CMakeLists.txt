@@ -49,19 +49,19 @@ add_library(Volty SHARED
         src/Network/UDPClient.cpp
         src/Gui/GuiLayer.cpp
 
-        src/Core.h
-        src/ECS.h
-        src/Engine.h
-        src/Modules.h
-        src/Network.h
-        src/Rendering.h
-        src/Utils.h
+        include/Core.h
+        include/ECS.h
+        include/Volty.h
+        include/Modules.h
+        include/Network.h
+        include/Rendering.h
+        include/Utils.h
         )
 
 target_include_directories(Volty PRIVATE
         ${SFML_INCLUDE_DIR}
         ${LUA_INCLUDE_DIR}
-        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/include
         )
 
 target_link_libraries(Volty

@@ -1,5 +1,5 @@
-﻿#include "Ray.h"
-#include "PhysicalObject.h"
+﻿#include "Physics/Ray.h"
+#include "Physics/PhysicalObject.h"
 
 void Ray::try_intersect(PhysicalObject& obj) {
     if (obj.is_hit(m_pos))

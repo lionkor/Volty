@@ -1,4 +1,4 @@
-﻿#include "IEventReceiver.h"
+﻿#include "Events/IEventReceiver.h"
 #include "Utils/DebugTools.h"
 
 IEventReceiver::IEventReceiver(EventDispatcher& dispatcher)

@@ -1,5 +1,5 @@
-﻿#include "EventDispatcher.h"
-#include "IEventReceiver.h"
+﻿#include "Events/EventDispatcher.h"
+#include "Events/IEventReceiver.h"
 #include "Utils/DebugTools.h"
 
 #include <boost/container/vector.hpp>

@@ -1,4 +1,4 @@
-﻿#include "Entity.h"
+﻿#include "ECS/Entity.h"
 #include "Core/World.h"
 
 void Entity::on_cleanup(DrawSurface& surface) {

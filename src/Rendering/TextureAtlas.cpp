@@ -1,4 +1,4 @@
-#include "TextureAtlas.h"
+#include "Rendering/TextureAtlas.h"
 
 TextureAtlas::TextureAtlas(OwnPtr<sf::Texture> atlas, size_t subtexture_size)
     : m_atlas(std::move(atlas))

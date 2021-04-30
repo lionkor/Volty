@@ -1,4 +1,4 @@
-﻿#include "GuiElement.h"
+﻿#include "Rendering/GuiElement.h"
 #include "Core/Application.h"
 
 GuiElement::GuiElement(Application& app, const vecu& screen_pos, const vecd& scale, const std::string& text, sf::Color color)

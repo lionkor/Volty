@@ -1,4 +1,4 @@
-#include "ScriptableComponent.h"
+#include "ECS/ScriptableComponent.h"
 
 #include "Core/Application.h"
 #include "Utils/Constants.h"

@@ -1,5 +1,5 @@
-﻿#ifndef ENGINE_H
-#define ENGINE_H
+﻿#ifndef VOLTY_ENGINE_H
+#define VOLTY_ENGINE_H
 
 #include "Core.h"
 #include "ECS.h"
@@ -7,4 +7,4 @@
 #include "Rendering.h"
 #include "Utils.h"
 
-#endif // ENGINE_H
+#endif // VOLTY_ENGINE_H

@@ -1,5 +1,5 @@
-﻿#include "ResourceManager.h"
-#include "stl_ext.h"
+﻿#include "Utils/ResourceManager.h"
+#include "Utils/stl_ext.h"
 
 ResourceManager::ResourceManager(const std::filesystem::path& res_file_path)
     : m_res_file(res_file_path)

@@ -1,6 +1,6 @@
-#include "TileMapComponent.h"
+#include "ECS/TileMapComponent.h"
 
-#include "Entity.h"
+#include "ECS/Entity.h"
 #include "Rendering/TextureAtlas.h"
 #include "Utils/ResourceManager.h"
 

@@ -1,4 +1,4 @@
-#include "GenericModuleComponent.h"
+#include "Modules/GenericModuleComponent.h"
 
 #ifdef __linux__
 #include <dlfcn.h>
