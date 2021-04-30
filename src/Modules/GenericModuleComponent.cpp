@@ -11,13 +11,12 @@
 #define DLOPEN LoadLibrary
 #define DLSYM GetProcAddress
 #define DLCLOSE FreeLibrary
-#define DLERROR
+#define DLERROR() "dll error"
 #else
 #error "platform not supported, please implement dll/so handling"
 #endif
 
 #include <chrono>
-#include <debug/debug.h>
 #include <functional>
 #include <sys/stat.h>
 

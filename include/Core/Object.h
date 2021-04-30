@@ -15,7 +15,7 @@
  * An Object is identified uniquely by it's uuid.
  */
 
-using UUID = size_t;
+using VoltyUUID = size_t;
 
 static inline std::atomic_size_t s_uuid_counter = 0;
 
@@ -49,7 +49,7 @@ public:
 
     virtual ~Object() = default;
 
-    [[nodiscard]] virtual const UUID& uuid() const final { return m_uuid; }
+    [[nodiscard]] virtual const VoltyUUID& uuid() const final { return m_uuid; }
 
     virtual bool operator==(const Object& other) const { return m_uuid == other.m_uuid; }
     virtual bool operator!=(const Object& other) const { return !(*this == other); }
@@ -66,9 +66,9 @@ protected:
     }
 
 private:
-    UUID m_uuid;
+    VoltyUUID m_uuid;
 
-    static inline UUID new_uuid() {
+    static inline VoltyUUID new_uuid() {
         return ++s_uuid_counter;
     }
 };
