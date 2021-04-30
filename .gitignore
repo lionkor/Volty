@@ -1,5 +1,6 @@
-antsim3.*
 build/*
+.idea/*
+cmake-build*
 *tags
 .tags
 *.orig
