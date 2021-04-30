@@ -30,16 +30,10 @@ add_library(Volty SHARED
         include/ECS/Entity.h
         include/ECS/ScriptableComponent.h
         include/ECS/TileMapComponent.h
-        include/Events/Event.h
-        include/Events/EventDispatcher.h
-        include/Events/IEventReceiver.h
         include/Gui/GuiLayer.h
         include/Modules.h
         include/Modules/GenericModule.h
         include/Modules/GenericModuleComponent.h
-        include/Network.h
-        include/Network/UDPClient.h
-        include/Network/UDPServer.h
         include/Physics/Collider.h
         include/Physics/IHittable.h
         include/Physics/PhysicalObject.h
@@ -75,14 +69,9 @@ add_library(Volty SHARED
         src/ECS/Entity.cpp
         src/ECS/ScriptableComponent.cpp
         src/ECS/TileMapComponent.cpp
-        src/Events/Event.cpp
-        src/Events/EventDispatcher.cpp
-        src/Events/IEventReceiver.cpp
         src/Gui/GuiLayer.cpp
         src/Modules/GenericModule.cpp
         src/Modules/GenericModuleComponent.cpp
-        src/Network/UDPClient.cpp
-        src/Network/UDPServer.cpp
         src/Physics/Collider.cpp
         src/Physics/PhysicalObject.cpp
         src/Physics/PhysicsObject.cpp
