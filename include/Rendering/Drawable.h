@@ -20,20 +20,13 @@ struct Color final {
         , a(_a) {
     }
 
-    static const Color Red;
-    static const Color Green;
-    static const Color Blue;
-    static const Color White;
-    static const Color Black;
-    static const Color Transparent;
+    static constexpr Color Red() { return { 255, 0, 0, 255 }; }
+    static constexpr Color Green() { return { 0, 255, 0, 255 }; }
+    static constexpr Color Blue() { return { 0, 0, 255, 255 }; }
+    static constexpr Color White() { return { 255, 255, 255, 255 }; }
+    static constexpr Color Black() { return { 0, 0, 0, 255 }; }
+    static constexpr Color Transparent() { return { 0, 0, 0, 0 }; }
 };
-
-constexpr const Color Color::Red = { 255, 0, 0, 255 };
-constexpr const Color Color::Green = { 0, 255, 0, 255 };
-constexpr const Color Color::Blue = { 0, 0, 255, 255 };
-constexpr const Color Color::White = { 255, 255, 255, 255 };
-constexpr const Color Color::Black = { 0, 0, 0, 255 };
-constexpr const Color Color::Transparent = { 0, 0, 0, 0 };
 
 inline std::ostream& operator<<(std::ostream& os, const Color& color) {
     return os << "(" << int(color.r) << ", " << int(color.g) << ", " << int(color.b) << ", " << int(color.a) << ")";
@@ -162,7 +155,7 @@ public:
     void set_scale(double) override { NOTIMPL; }
     vecd position() const override { return m_position; }
     double rotation() const override { return 0; }
-    Color color() const override { return Color::Black; }
+    Color color() const override { return Color::Black(); }
     double scale() const override { return 1; }
 
     vec<size_t> grid_size() const { return m_grid_size; }

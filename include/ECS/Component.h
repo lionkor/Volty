@@ -115,7 +115,7 @@ private:
     Rectangle m_drawable;
 
 public:
-    SpriteComponent(Entity& e, const vecd& sprite_offset, const vecd& sprite_size, const Color& color = Color::Green, const std::string& texture_name = "");
+    SpriteComponent(Entity& e, const vecd& sprite_offset, const vecd& sprite_size, const Color& color = Color::Green(), const std::string& texture_name = "");
 
     std::string texture_name() const { return m_texture_name; }
 

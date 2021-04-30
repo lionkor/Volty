@@ -67,8 +67,8 @@ private:
     GuiLayer& m_gui;
     vecd m_pos;
     vecd m_size;
-    Color m_background_color { Color::White };
-    Color m_foreground_color { Color::Black };
+    Color m_background_color { Color::White() };
+    Color m_foreground_color { Color::Black() };
     std::string m_text;
     sf::Font m_font;
     Rectangle m_rect;
