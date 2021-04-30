@@ -47,7 +47,7 @@ static const char* const ANSI_UNDERLINE = "\u001b[4m";
 #ifndef NOTIMPL
 #define NOTIMPL                                                                    \
     fprintf(stderr, "%s%s called but not implemented / unfinished in %s%s:%u%s\n", \
-        ANSI_YELLOW, __PRETTY_FUNCTION__, ANSI_BOLD, __FILE__, __LINE__,           \
+        ANSI_YELLOW, _PRETTY_FUNCTION, ANSI_BOLD, __FILE__, __LINE__,              \
         ANSI_RESET);
 
 #endif // NOTIMPL
@@ -80,11 +80,11 @@ static inline void report_impl(const char* format, Args&&... args) {
 #define report_error(...) \
     impl::report_impl("{}{}[ERROR] in {}:{} in {}: {}{}\n", ANSI_RESET, ANSI_RED, FILENAME, __LINE__, __func__, fmt::format(__VA_ARGS__), ANSI_RESET);
 
-#define report_function() report("{}{}{}{}{}", ANSI_RESET, ANSI_UNDERLINE, __PRETTY_FUNCTION__, ANSI_RESET, " was called!")
+#define report_function() report("{}{}{}{}{}", ANSI_RESET, ANSI_UNDERLINE, _PRETTY_FUNCTION, ANSI_RESET, " was called!")
 
 #ifndef ASSERT
-#define ASSERT(cond) _assert(__FILE__, __PRETTY_FUNCTION__, __LINE__, #cond, (cond))
-#define ASSERT_NOT_REACHABLE() _assert(__FILE__, __PRETTY_FUNCTION__, __LINE__, "reached unreachable code", false)
+#define ASSERT(cond) _assert(__FILE__, _PRETTY_FUNCTION, __LINE__, #cond, (cond))
+#define ASSERT_NOT_REACHABLE() _assert(__FILE__, _PRETTY_FUNCTION, __LINE__, "reached unreachable code", false)
 
 #define DEBUG 1 // TODO: CHANGE ME!
 inline void _assert(const char* file, const char* function, [[maybe_unused]] unsigned line,
