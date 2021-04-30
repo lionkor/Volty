@@ -2,7 +2,7 @@
 
 All and any contributions, no matter their complexity, are welcome.
 
-All contributions fall under the project's [MIT License](https://github.com/lionkor/Volty/LICENSE).
+All contributions fall under the project's [MIT License](https://github.com/lionkor/Volty/blob/master/LICENSE).
 
 ## Contributing Source-Code
 
