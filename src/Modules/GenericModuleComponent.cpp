@@ -60,7 +60,8 @@ GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll
     }
 
     auto last_time = std::filesystem::last_write_time(dll_name);
-    report("loaded dynamic module \"{}\" version {} (last changed: {})", dll_name, version_fn(), time_point_as_string(std::chrono::system_clock::time_point(last_time.time_since_epoch())));
+    report("loaded dynamic module \"{}\" version {} (last changed: {})", dll_name, version_fn(),
+        time_point_as_string(std::chrono::system_clock::time_point(last_time.time_since_epoch())));
 
     on_create_fn(&parent());
 
