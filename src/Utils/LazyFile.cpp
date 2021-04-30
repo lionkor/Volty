@@ -35,14 +35,8 @@ void LazyFile::validate() {
 
 Result<bool> LazyFile::restat() {
     Result<bool> result;
-    struct stat new_stat { };
-    auto ret = stat(m_path.c_str(), &new_stat);
-    if (ret != 0) {
-        result.set_error("stat \"{}\" failed with error: {}", m_path, std::strerror(errno));
-        report_error(result.message());
-        return result;
-    }
-    m_stat = new_stat;
+    m_last_time = std::filesystem::last_write_time(m_path);
+    m_file_size = std::filesystem::file_size(m_path);
     return result.set_value(true);
 }
 
@@ -148,10 +142,5 @@ std::vector<uint8_t>* LazyFile::load() {
 }
 
 bool LazyFile::has_changed_on_disk() const {
-    struct stat new_stat { };
-    auto ret = stat(m_path.c_str(), &new_stat);
-    if (ret != 0) {
-        return true;
-    }
-    return new_stat.st_mtim.tv_sec != m_stat.st_mtim.tv_sec || new_stat.st_ctim.tv_sec != m_stat.st_ctim.tv_sec;
+    return std::filesystem::last_write_time(m_path) != m_last_time;
 }

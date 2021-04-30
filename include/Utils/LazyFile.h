@@ -19,7 +19,8 @@ private:
     Result<bool> m_validation_result;
     std::vector<std::uint8_t> m_data;
     std::filesystem::path m_path;
-    struct stat m_stat;
+    size_t m_file_size;
+    std::filesystem::file_time_type m_last_time;
     bool m_loaded { false };
 
     void reset();
@@ -37,7 +38,7 @@ public:
 
     [[nodiscard]] bool is_valid() const { return m_validation_result.ok(); }
     [[nodiscard]] std::string validation_error_message() const { return m_validation_result.message(); }
-    [[nodiscard]] std::size_t size_on_disk() const { return static_cast<size_t>(m_stat.st_size); }
+    [[nodiscard]] std::size_t size_on_disk() const { return m_file_size; }
 
     [[nodiscard]] Result<bool> force_reload();
     [[nodiscard]] Result<bool> restat();

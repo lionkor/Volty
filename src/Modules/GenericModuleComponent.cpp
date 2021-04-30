@@ -3,6 +3,13 @@
 #include <chrono>
 #include <sys/stat.h>
 
+static inline std::string time_point_as_string(const std::chrono::system_clock::time_point& tp) {
+    std::time_t t = std::chrono::system_clock::to_time_t(tp);
+    std::string ts = std::ctime(&t);
+    ts.resize(ts.size() - 1);
+    return ts;
+}
+
 GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll_name)
     : Component(e) {
     // unsafe
@@ -52,28 +59,8 @@ GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll
         on_mouse_move_fn = [&](C_vec_d) {};
     }
 
-#if defined(__linux__)
-    struct stat meta { };
-    auto ret = stat(dll_name.c_str(), &meta);
-#elif defined(WIN32)
-    struct _stat meta { };
-    auto ret = _stat(dll_name.c_str(), &meta);
-#endif
-
-    if (ret != 0) {
-        report_error("couldn't stat dynamic module file \"{}\": {}", dll_name, strerror(errno));
-        return;
-    }
-
-#if defined(__linux__)
-    std::string last_changed = std::ctime(&meta.st_mtim.tv_sec);
-#elif defined(WIN32)
-    std::string last_changed = std::ctime(&meta.st_mtime.tv_sec);
-#endif
-
-    // ctime puts \n at the end, lets remove it
-    last_changed.erase(last_changed.size() - 1);
-    report(fmt::format("loaded dynamic module \"{}\" version {} (last changed: {})", dll_name, version_fn(), last_changed).c_str());
+    auto last_time = std::filesystem::last_write_time(dll_name);
+    report("loaded dynamic module \"{}\" version {} (last changed: {})", dll_name, version_fn(), time_point_as_string(std::chrono::system_clock::time_point(last_time.time_since_epoch())));
 
     on_create_fn(&parent());
 
