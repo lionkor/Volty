@@ -13,6 +13,10 @@ endif ()
 
 set(CMAKE_CXX_STANDARD 20)
 
+# we have to do this since windows support was added later and pretty much
+# everything in Volty is supposed to be public anyways.
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 project(Volty)
 
 find_package(Lua 5.3 REQUIRED)
