@@ -3,7 +3,6 @@
 
 #include <cstdio>
 #include <iostream>
-#include <libgen.h>
 #include <stdlib.h>
 // TODO: common.h, precompiled
 #define FMT_HEADER_ONLY
