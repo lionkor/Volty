@@ -1,6 +1,6 @@
 ﻿cmake_minimum_required(VERSION 3.13)
 
-if(UNIX)
+if (UNIX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
         -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wformat -Wformat-overflow -Wnull-dereference \
         -Wimplicit-fallthrough -Wmisleading-indentation -Wparentheses -Wunused-parameter -Wuninitialized \
@@ -8,8 +8,8 @@ if(UNIX)
         -Wno-unused-function -Wfloat-equal -Wshadow -Wcast-qual -Wparentheses -pthread")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} -O3 -s")
-elseif(WIN32)
-endif()
+elseif (WIN32)
+endif ()
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -18,7 +18,6 @@ project(Volty)
 find_package(Lua 5.3 REQUIRED)
 find_package(SFML COMPONENTS system graphics window audio REQUIRED)
 find_package(fmt REQUIRED)
-find_package(TBB REQUIRED tbb)
 
 add_library(Volty SHARED
         include/Core.h
@@ -103,10 +102,16 @@ target_link_libraries(Volty
         sfml-window
         sfml-graphics
         sfml-audio
-        tbb
         ${FMT_LIBRARIES}
         ${LUA_LIBRARIES}
         )
+
+if (UNIX)
+    # unsure what pulls this in, but for now it seems only to be a linux issue.
+    find_package(TBB REQUIRED tbb)
+    target_link_libraries(Volty tbb)
+endif ()
+
 
 target_compile_definitions(Volty PRIVATE WIN_EXPORT)
 
