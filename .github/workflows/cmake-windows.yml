@@ -21,7 +21,7 @@ jobs:
           vcpkgArguments: 'lua sfml tbb fmt'
           vcpkgDirectory: '${{ runner.workspace }}/b/vcpkg'
           vcpkgGitCommitId: '75522bb1f2e7d863078bcd06322348f053a9e33f'
-          vcpkgTriplet: 'x64-windows'
+          vcpkgTriplet: 'x64-windows-static'
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{github.workspace}}/build-windows
@@ -29,7 +29,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: ${{github.workspace}}/build-windows
-        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_TOOLCHAIN_FILE='${{ runner.workspace }}/b/vcpkg/scripts/buildsystems/vcpkg.cmake' -DVCPKG_TARGET_TRIPLET=x64-windows
+        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_TOOLCHAIN_FILE='${{ runner.workspace }}/b/vcpkg/scripts/buildsystems/vcpkg.cmake' -DVCPKG_TARGET_TRIPLET=x64-windows-static
 
       - name: Build
         working-directory: ${{github.workspace}}/build-windows
