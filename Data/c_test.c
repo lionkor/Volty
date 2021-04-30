@@ -1,7 +1,7 @@
-#include "../Modules/GenericModule.h"
-#include <string.h>
-#include <stdlib.h>
+#include "Modules/GenericModule.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void on_create(C_Entity* entity) {
     C_vec_d delta = { 10, -10 };
