@@ -2,7 +2,9 @@
 
 All and any contributions, no matter their complexity, are welcome.
 
-## Contributing Code
+All contributions fall under the project's [MIT License](https://github.com/lionkor/Volty/LICENSE).
+
+## Contributing Source-Code
 
 1. Fork the repository.
 
@@ -34,3 +36,4 @@ Once you're done, create a pull-request on [`lionkor/Volty`](https://github.com/
 ## Contributing Ideas
 
 If you have an idea but you're not sure you could implement it by yourself, feel free to open an [issue](https://github.com/lionkor/Volty/issues) explaining what you'd like to see changed, added, removed or improved. 
+
