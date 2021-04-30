@@ -11,21 +11,8 @@ Component::Component(Entity& parent)
     , m_application(m_parent.world().application()) {
 }
 
-std::stringstream Component::to_stream() const {
-    TS_BEGIN(Object);
-    TS_PROP_M(m_parent.uuid());
-    TS_END();
-}
-
 void TransformComponent::move_by(const vecd& delta) {
     m_position += delta;
-}
-
-std::stringstream TransformComponent::to_stream() const {
-    TS_BEGIN(Component);
-    TS_PROP_M(m_position);
-    TS_PROP_M(m_rotation);
-    TS_END();
 }
 
 SpriteComponent::SpriteComponent(Entity& e, const vecd& sprite_offset, const vecd& sprite_size, const Color& color, const std::string& name)
@@ -48,13 +35,6 @@ void SpriteComponent::on_update(float) {
 
 void SpriteComponent::on_draw(DrawSurface& surface) {
     surface.draw(m_drawable);
-}
-
-std::stringstream SpriteComponent::to_stream() const {
-
-    TS_BEGIN(Component);
-    TS_PROP_M(m_drawable);
-    TS_END();
 }
 
 void SpriteComponent::on_cleanup(DrawSurface& surface) {

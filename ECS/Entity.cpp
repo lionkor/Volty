@@ -70,20 +70,6 @@ void Entity::destroy() {
     m_children.clear();
 }
 
-std::stringstream Entity::to_stream() const {
-    TS_BEGIN(Object);
-    TS_PROP_M(m_parent);
-    TS_PROP_M(m_children.size());
-    ss << "components={";
-    for (auto& comp : m_comps) {
-        ss << *comp;
-        if (comp != m_comps.back())
-            ss << ",";
-    }
-    ss << "};";
-    TS_END();
-}
-
 void Entity::on_key_down(GameWindow& window, const HID::Key& key) {
     for (auto& comp : m_comps) {
         if (comp->on_key_down)

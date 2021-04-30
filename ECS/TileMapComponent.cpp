@@ -4,7 +4,7 @@
 #include "Rendering/TextureAtlas.h"
 #include "Utils/ResourceManager.h"
 
-TileMapComponent::TileMapComponent(Entity& e, vec<size_t> grid_size, double tile_size, const std::string& texture_atlas_name, size_t subtexture_size)
+TileMapComponent::TileMapComponent(Entity& e, const vec<size_t>& grid_size, double tile_size, const std::string& texture_atlas_name, size_t subtexture_size)
     : Component(e)
     , m_atlas(make_shared<TextureAtlas>(resource_manager().load_texture(texture_atlas_name), subtexture_size))
     , m_grid(grid_size, tile_size, m_atlas) {

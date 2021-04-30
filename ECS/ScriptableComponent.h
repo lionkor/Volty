@@ -7,11 +7,7 @@
 
 #include <variant>
 
-extern "C" {
-#include <lauxlib.h>
-#include <lua.h>
-#include <lualib.h>
-}
+#include <lua.hpp>
 
 #include "Utils/stl_ext.h"
 #include <functional>

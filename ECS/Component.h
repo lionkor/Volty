@@ -1,6 +1,8 @@
 ﻿#ifndef COMPONENT_H
 #define COMPONENT_H
 
+#include <utility>
+
 #include "Core/HID.h"
 #include "Core/Object.h"
 #include "Physics/vec.h"
@@ -39,8 +41,8 @@ protected:
     std::function<void(GameWindow&, const HID::Key&)> on_key_up { nullptr };
 
 public:
-    Component(Entity&);
-    virtual ~Component() noexcept = default;
+    explicit Component(Entity&);
+    ~Component() noexcept override = default;
 
     virtual bool is_unique() const { return true; }
 
@@ -57,10 +59,6 @@ public:
     const World& world() const noexcept { return m_world; }
     Application& application() noexcept { return m_application; }
     const Application& application() const noexcept { return m_application; }
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
 };
 
 class TransformComponent
@@ -77,9 +75,9 @@ protected:
     TransformComponent* m_parent_transform { nullptr };
 
 public:
-    TransformComponent(Entity& e, const vecd& pos = { 0.0, 0.0 }, double rot = 0)
+    explicit TransformComponent(Entity& e, vecd pos = { 0.0, 0.0 }, double rot = 0)
         : Component(e)
-        , m_position(pos)
+        , m_position(std::move(pos))
         , m_rotation(rot) {
     }
 
@@ -100,15 +98,11 @@ public:
 
     // FIXME: These setters are not safe since we work with relative positons and rotations
     void set_position(const vecd& pos) { m_position = pos; }
-    void set_position(vecd&& pos) { m_position = std::move(pos); }
+    void set_position(vecd&& pos) { m_position = pos; }
     void set_rotation(double rot) { m_rotation = rot; }
-    void set_rotation(double&& rot) { m_rotation = std::move(rot); }
+    void set_rotation(double&& rot) { m_rotation = rot; }
 
     void move_by(const vecd& delta);
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
 };
 
 class SpriteComponent
@@ -127,17 +121,13 @@ public:
 
     // Component interface
 public:
-    virtual void on_update(float) override;
-    virtual void on_draw(DrawSurface&) override;
+    void on_update(float) override;
+    void on_draw(DrawSurface&) override;
 
-    virtual bool is_unique() const override { return false; }
+    bool is_unique() const override { return false; }
 
 protected:
-    virtual void on_cleanup(DrawSurface&) override;
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
+    void on_cleanup(DrawSurface&) override;
 };
 
 #endif // COMPONENT_H

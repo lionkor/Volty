@@ -1,6 +1,7 @@
 ﻿#ifndef GAMEOBJNAME_H
 #define GAMEOBJNAME_H
 
+#include <concepts>
 #include <utility>
 #include <vector>
 
@@ -31,7 +32,7 @@ private:
     void on_cleanup(DrawSurface&);
 
 public:
-    Entity(World& world, const vecd& pos = { 0, 0 });
+    explicit Entity(World& world, const vecd& pos = { 0, 0 });
 
     void remove_child(Entity* entity);
 
@@ -40,13 +41,13 @@ public:
     template<typename... Args>
     WeakPtr<Entity> add_child(Args&&... args);
 
-    template<class DerivedComponentT>
+    template<std::derived_from<Component> DerivedComponentT>
     bool has_component() const;
 
-    template<class DerivedComponentT>
+    template<std::derived_from<Component> DerivedComponentT>
     DerivedComponentT* fetch_component();
 
-    template<class DerivedComponentT, typename... Args>
+    template<std::derived_from<Component> DerivedComponentT, typename... Args>
     DerivedComponentT& add_component(Args&&...);
 
     void on_update(float dt);
@@ -73,10 +74,6 @@ public:
     const Entity* parent() const { return m_parent; }
     TransformComponent& transform() { return m_transform; }
     const TransformComponent& transform() const { return m_transform; }
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
 };
 
 // templates below, ugly ahead!
@@ -95,18 +92,18 @@ WeakPtr<Entity> Entity::add_child(Args&&... args) {
 }
 void remove_child(Entity* entity);
 
-template<class DerivedComponentT>
+template<std::derived_from<Component> DerivedComponentT>
 bool Entity::has_component() const {
     const std::string name = DerivedComponentT::class_name_static();
     const auto has_this_name = [&](const auto& obj_ptr) { return obj_ptr->class_name() == name; };
     return std::find_if(m_comps.begin(), m_comps.end(), has_this_name) != m_comps.end();
 }
 
-template<class DerivedComponentT>
+template<std::derived_from<Component> DerivedComponentT>
 DerivedComponentT* Entity::fetch_component() {
     const std::string name = DerivedComponentT::class_name_static();
     const auto has_this_name = [&](const auto& obj_ptr) { return obj_ptr->class_name() == name; };
-    decltype(m_comps)::const_iterator iter = std::find_if(m_comps.begin(), m_comps.end(),
+    auto iter = std::find_if(m_comps.begin(), m_comps.end(),
         [&](const auto& comp) {
             return comp->class_name() == name;
         });
@@ -117,7 +114,7 @@ DerivedComponentT* Entity::fetch_component() {
     }
 }
 
-template<class DerivedComponentT, typename... Args>
+template<std::derived_from<Component> DerivedComponentT, typename... Args>
 [[nodiscard]] DerivedComponentT& Entity::add_component(Args&&... args) {
     auto raw_ptr = new DerivedComponentT(*this, std::forward<Args>(args)...);
     auto comp = SharedPtr<DerivedComponentT>(std::move(raw_ptr));
