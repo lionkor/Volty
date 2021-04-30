@@ -8,7 +8,7 @@
 #include "Physics/vec.h"
 #include <SFML/Graphics.hpp>
 
-class Color;
+struct Color;
 
 namespace ext::sf {
 template<std::convertible_to<float> T>
