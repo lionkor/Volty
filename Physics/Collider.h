@@ -1,19 +1,17 @@
 ﻿#ifndef COLLIDER_H
 #define COLLIDER_H
 
-#include "Utils/DebugTools.h"
 #include "Core/Object.h"
+#include "Utils/DebugTools.h"
 #include "Utils/Result.h"
 #include "vec.h"
 
 class Collider
-    : public Object
-{
+    : public Object {
     OBJNAME(Collider)
 
 public:
-    enum class Shape
-    {
+    enum class Shape {
         Rectangle,
         Circle,
     };

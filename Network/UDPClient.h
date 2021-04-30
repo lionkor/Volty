@@ -8,8 +8,7 @@
 
 using boost::asio::ip::udp;
 
-class UDPClient : public Object
-{
+class UDPClient : public Object {
     OBJNAME(UDPClient)
 private:
     boost::asio::io_context m_io;

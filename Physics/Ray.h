@@ -4,15 +4,13 @@
 #include <vector>
 
 #include "Core/Object.h"
-#include "vec.h"
 #include "IHittable.h"
+#include "vec.h"
 
 class PhysicalObject;
 
-
 /// Describes what has been hit, in what order.
-class RayHit : public Object
-{
+class RayHit : public Object {
     OBJNAME(RayHit);
 
     std::vector<IHittable*> m_hits_in_order;
@@ -34,8 +32,7 @@ public:
 };
 
 /// Helper class for calculating raycasts used for hit detection.
-class Ray : public Object
-{
+class Ray : public Object {
     OBJNAME(Ray)
     vecd m_pos;
     RayHit m_hit;

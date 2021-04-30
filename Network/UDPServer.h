@@ -1,15 +1,15 @@
 #ifndef UDPSERVER_H
 #define UDPSERVER_H
 
+#include "Core/Object.h"
 #include "Utils/DebugTools.h"
 #include "Utils/Managed.h"
-#include "Core/Object.h"
 
 #include <array>
 #include <boost/asio.hpp>
 #include <functional>
-#include <optional>
 #include <memory>
+#include <optional>
 
 using boost::asio::ip::udp;
 
@@ -42,8 +42,7 @@ struct hash<ServerSideUDPClient> {
 };
 }
 
-class UDPServer : public Object
-{
+class UDPServer : public Object {
     OBJNAME(UDPServer)
 private:
     boost::asio::io_context m_io;

@@ -1,6 +1,6 @@
 ﻿#include "Component.h"
-#include "Core/World.h"
 #include "Core/Application.h"
+#include "Core/World.h"
 #include "Entity.h"
 
 Component::Component(Entity& parent)

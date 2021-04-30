@@ -1,12 +1,11 @@
 ﻿#ifndef ISERIALIZABLE_H
 #define ISERIALIZABLE_H
 
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
 #include "DebugTools.h"
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/text_oarchive.hpp>
 
-class ISerializable
-{
+class ISerializable {
 private:
 public:
     friend class boost::serialization::access;

@@ -1,18 +1,18 @@
 ﻿#ifndef WORLD_H
 #define WORLD_H
 
-#include <memory>
-#include <vector>
-#include <set>
-#include <optional>
 #include <chrono>
+#include <memory>
+#include <optional>
+#include <set>
+#include <vector>
 
+#include "Core/GameWindow.h"
+#include "Core/Object.h"
+#include "Physics/IHittable.h"
+#include "Physics/vec.h"
 #include "Utils/DebugTools.h"
 #include "Utils/Managed.h"
-#include "Core/Object.h"
-#include "Physics/vec.h"
-#include "Physics/IHittable.h"
-#include "Core/GameWindow.h"
 
 #include <deque>
 
@@ -21,8 +21,7 @@ class Entity;
 
 /// The world manages all physical objects.
 class World
-    : public Object
-{
+    : public Object {
     OBJNAME(World)
 
     friend class Application;
@@ -42,7 +41,7 @@ private:
 
 public:
     explicit World(Application& app);
-    virtual ~World() {}
+    virtual ~World() { }
 
     /// Takes ownership of the passed (new-allocated) pointer `obj`.
     WeakPtr<Entity> add_entity(const vecd& pos = {});

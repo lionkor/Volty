@@ -3,17 +3,16 @@
 
 #include <filesystem>
 #include <string>
-#include <vector>
 #include <sys/stat.h>
+#include <vector>
 
-#include "DebugTools.h"
-#include "Core/Object.h"
-#include "Result.h"
 #include "Common.h"
+#include "Core/Object.h"
+#include "DebugTools.h"
+#include "Result.h"
 
 class LazyFile
-    : public Object
-{
+    : public Object {
     OBJNAME(LazyFile)
 
 private:

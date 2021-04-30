@@ -1,16 +1,15 @@
 ﻿#ifndef CSVLOGGER_H
 #define CSVLOGGER_H
 
-#include "DebugTools.h"
 #include "Common.h"
-#include <fstream>
+#include "DebugTools.h"
 #include <atomic>
+#include <fstream>
+#include <mutex>
 #include <queue>
 #include <thread>
-#include <mutex>
 
-class CsvLogger
-{
+class CsvLogger {
 private:
     std::string m_filename;
     std::ofstream m_os;

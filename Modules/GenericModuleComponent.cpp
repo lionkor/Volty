@@ -10,10 +10,10 @@
 #error "currently not supported, please implement"
 #endif
 
-#include <functional>
 #include <chrono>
-#include <sys/stat.h>
 #include <debug/debug.h>
+#include <functional>
+#include <sys/stat.h>
 
 GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll_name)
     : Component(e) {

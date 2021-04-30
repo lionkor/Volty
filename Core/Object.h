@@ -119,7 +119,7 @@ public:                                               \
             __name.erase(__res);                                   \
         ss << __name << "=" << property << ";";                    \
     } while (false)
-#define TS_PROP_M_STR(property)                                        \
+#define TS_PROP_M_STR(property)                                    \
     do {                                                           \
         auto __name = std::string(#property);                      \
         __name.erase(0, 2);                                        \
@@ -129,7 +129,7 @@ public:                                               \
         __res = std::find(__name.begin(), __name.end(), ')');      \
         if (__res != __name.end())                                 \
             __name.erase(__res);                                   \
-        ss << __name << "=\"" << property << "\";";                    \
+        ss << __name << "=\"" << property << "\";";                \
     } while (false)
 
 #define TS_END() return ss

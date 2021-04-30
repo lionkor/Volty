@@ -3,8 +3,7 @@
 
 #include "Component.h"
 
-class TileMapComponent : public Component
-{
+class TileMapComponent : public Component {
     OBJNAME(TileMapComponent)
 private:
     SharedPtr<TextureAtlas> m_atlas;

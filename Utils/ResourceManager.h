@@ -1,17 +1,16 @@
 ﻿#ifndef RESOURCEMANAGER_H
 #define RESOURCEMANAGER_H
 
+#include "Common.h"
 #include "Core/Object.h"
 #include "DebugTools.h"
 #include "LazyFile.h"
-#include "Common.h"
 #include "Managed.h"
-#include <map>
 #include <SFML/Graphics.hpp>
+#include <map>
 
 class ResourceManager
-    : Object
-{
+    : Object {
     OBJNAME(ResourceManager)
 private:
     /// File holding a list of all resources

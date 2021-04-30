@@ -6,8 +6,7 @@
 #define INTERNAL
 #include "GenericModule.h"
 
-class GenericModuleComponent : public Component
-{
+class GenericModuleComponent : public Component {
     OBJNAME(Component)
 private:
     void* m_dll_handle { nullptr };

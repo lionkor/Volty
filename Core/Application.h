@@ -3,17 +3,16 @@
 
 #include <thread>
 
+#include "GameWindow.h"
+#include "Object.h"
+#include "Rendering/GuiElement.h"
 #include "Utils/DebugTools.h"
 #include "Utils/Managed.h"
 #include "Utils/Mutexed.h"
-#include "Object.h"
-#include "World.h"
-#include "GameWindow.h"
 #include "Utils/ResourceManager.h"
-#include "Rendering/GuiElement.h"
+#include "World.h"
 
-class Application : public Object
-{
+class Application : public Object {
     OBJNAME(Application)
 
 private:

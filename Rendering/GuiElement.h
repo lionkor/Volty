@@ -6,8 +6,7 @@
 #include "Physics/vec.h"
 
 class GuiElement
-    : public Object
-{
+    : public Object {
     OBJNAME(GuiElement)
 private:
     sf::Text m_text_obj;

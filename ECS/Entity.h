@@ -1,20 +1,19 @@
 ﻿#ifndef GAMEOBJNAME_H
 #define GAMEOBJNAME_H
 
-#include <vector>
 #include <utility>
+#include <vector>
 
+#include "Component.h"
 #include "Core/Object.h"
 #include "Core/World.h"
-#include "Component.h"
-#include "Utils/Managed.h"
 #include "Rendering/Draw.h"
 #include "Utils/Constants.h"
+#include "Utils/Managed.h"
 
 /// Monolithic class describing any Entity. Uses composition.
 class Entity final
-    : public Object
-{
+    : public Object {
     OBJNAME(Entity)
 
     friend class World;

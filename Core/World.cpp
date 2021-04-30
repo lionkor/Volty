@@ -1,9 +1,9 @@
 ﻿#include "World.h"
-#include "Utils/DebugTools.h"
-#include "Utils/Random.h"
-#include "Physics/Ray.h"
 #include "Application.h"
 #include "ECS/Entity.h"
+#include "Physics/Ray.h"
+#include "Utils/DebugTools.h"
+#include "Utils/Random.h"
 
 #include <algorithm>
 

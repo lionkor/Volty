@@ -1,13 +1,12 @@
 ﻿#ifndef EVENTDISPATCHER_H
 #define EVENTDISPATCHER_H
 
-#include <boost/container/deque.hpp>
 #include "Events/Event.h"
+#include <boost/container/deque.hpp>
 
 class IEventReceiver;
 
-class EventDispatcher
-{
+class EventDispatcher {
 private:
     boost::container::deque<IEventReceiver*> m_receivers;
 

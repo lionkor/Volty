@@ -4,8 +4,7 @@
 #include <mutex>
 
 template<class T>
-class Mutexed
-{
+class Mutexed {
 private:
     std::mutex m_mutex;
     T m_value;

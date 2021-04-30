@@ -5,7 +5,6 @@
  * To be used for scripting/modding purposes. Implementations are in GenericModule.cpp.
  */
 
-
 // engine API, implemented in GenericModuleComponent.cpp
 
 #ifdef INTERNAL

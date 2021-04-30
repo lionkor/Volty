@@ -1,14 +1,13 @@
 ﻿#ifndef RESULT_H
 #define RESULT_H
 
-#include <utility>
-#include <string>
-#include <optional>
 #include "DebugTools.h"
+#include <optional>
+#include <string>
+#include <utility>
 
 template<class T>
-class Result
-{
+class Result {
     std::optional<T> m_value;
     std::string m_message;
 

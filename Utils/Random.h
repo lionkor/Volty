@@ -4,8 +4,7 @@
 #include <random>
 
 /// Random number and chance generator helpers.
-class Random
-{
+class Random {
 private:
     static std::mt19937 s_generator;
 

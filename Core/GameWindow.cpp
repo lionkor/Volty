@@ -1,8 +1,8 @@
 ﻿#include "GameWindow.h"
-#include "Utils/DebugTools.h"
-#include "HID.h"
 #include "Application.h"
 #include "ECS/Entity.h"
+#include "HID.h"
+#include "Utils/DebugTools.h"
 
 GameWindow::GameWindow(Application& app, const std::string& title, sf::Vector2u size, bool fullscreen)
     : sf::RenderWindow(sf::VideoMode(size.x, size.y), title, fullscreen ? sf::Style::Fullscreen : sf::Style::Default, sf::ContextSettings(0, 0, 0))

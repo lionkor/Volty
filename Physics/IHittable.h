@@ -8,8 +8,7 @@
 
 /// \brief The IHittable interface
 /// provides support for the inheriting Object to be hit by a Ray
-class IHittable
-{
+class IHittable {
 public:
     std::size_t layer { 0 };
 

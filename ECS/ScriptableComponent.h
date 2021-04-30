@@ -2,22 +2,21 @@
 #define SCRIPTABLECOMPONENT_H
 
 #include "Component.h"
-#include "Entity.h"
 #include "Core/Object.h"
+#include "Entity.h"
 
 #include <variant>
 
 extern "C" {
+#include <lauxlib.h>
 #include <lua.h>
 #include <lualib.h>
-#include <lauxlib.h>
 }
 
-#include <functional>
 #include "Utils/stl_ext.h"
+#include <functional>
 
-class ScriptableComponent : public Component
-{
+class ScriptableComponent : public Component {
     OBJNAME(ScriptableComponent)
 private:
 protected:
@@ -55,7 +54,7 @@ public:
     void pop_stack() {
         lua_pop(m_lua_state, lua_gettop(m_lua_state));
     }
-    
+
     void call_function(const std::string& name, int nargs, int nresults);
 
     typedef int (*LuaFunction)(lua_State*);

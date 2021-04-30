@@ -1,11 +1,10 @@
 ﻿#ifndef EVENT_H
 #define EVENT_H
 
-#include <boost/atomic.hpp>
 #include "Core/Object.h"
+#include <boost/atomic.hpp>
 
-class Event : public Object
-{
+class Event : public Object {
     OBJNAME(Event)
 
 private:

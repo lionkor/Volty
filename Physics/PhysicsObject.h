@@ -1,14 +1,13 @@
 ﻿#ifndef PHYSICSOBJNAME_H
 #define PHYSICSOBJNAME_H
 
-#include "Utils/DebugTools.h"
-#include "PhysicalObject.h"
 #include "Collider.h"
+#include "PhysicalObject.h"
+#include "Utils/DebugTools.h"
 
 /// PhysicsObject is a Physical Object that is affected by physics (rigid body)
 class PhysicsObject
-    : public PhysicalObject
-{
+    : public PhysicalObject {
     OBJNAME(PhysicsObject)
 
 protected:

@@ -4,12 +4,11 @@
 #include <boost/atomic.hpp>
 #include <cstdint>
 
-#include "EventDispatcher.h"
 #include "Core/Object.h"
+#include "EventDispatcher.h"
 
 // Interfaces do not inherit from Object
-class IEventReceiver
-{
+class IEventReceiver {
 private:
     UUID m_uuid;
     EventDispatcher& m_dispatcher;

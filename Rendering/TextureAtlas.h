@@ -2,12 +2,11 @@
 #define TEXTUREATLAS_H
 
 #include "Core/Object.h"
-#include "Utils/Managed.h"
 #include "Physics/vec.h"
+#include "Utils/Managed.h"
 #include <SFML/Graphics/Texture.hpp>
 
-class TextureAtlas final : public Object
-{
+class TextureAtlas final : public Object {
     OBJNAME(TextureAtlas)
 private:
     Managed<sf::Texture> m_atlas;

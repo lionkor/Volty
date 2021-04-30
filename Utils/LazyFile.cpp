@@ -1,6 +1,6 @@
 ﻿#include "LazyFile.h"
-#include <fstream>
 #include <cstdio>
+#include <fstream>
 
 void LazyFile::reset() {
     m_data.clear();

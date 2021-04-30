@@ -12,8 +12,7 @@ class World;
 /// PhysicalObjects are hittable.
 class PhysicalObject
     : public Object,
-      public IHittable
-{
+      public IHittable {
     OBJNAME(PhysicalObject)
 
 private:

@@ -1,11 +1,11 @@
 ﻿#ifndef COMPONENT_H
 #define COMPONENT_H
 
+#include "Core/HID.h"
 #include "Core/Object.h"
 #include "Physics/vec.h"
 #include "Rendering/Draw.h"
 #include "Rendering/Drawable.h"
-#include "Core/HID.h"
 
 class Entity;
 class ResourceManager;
@@ -14,8 +14,7 @@ class World;
 class Application;
 
 class Component
-    : public Object
-{
+    : public Object {
     OBJNAME(Component)
     friend class Entity;
 
@@ -65,8 +64,7 @@ public:
 };
 
 class TransformComponent
-    : public Component
-{
+    : public Component {
     OBJNAME(TransformComponent)
 
     friend class Entity;
@@ -114,8 +112,7 @@ public:
 };
 
 class SpriteComponent
-    : public Component
-{
+    : public Component {
     OBJNAME(SpriteComponent)
 private:
     std::string m_texture_name;
