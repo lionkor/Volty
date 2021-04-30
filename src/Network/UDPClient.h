@@ -18,7 +18,7 @@ private:
 
 public:
     UDPClient(const std::string& host, const std::string& port);
-    ~UDPClient();
+    ~UDPClient() override;
 
     void send(std::array<char, 128>&& message);
     std::array<char, 128> recv();

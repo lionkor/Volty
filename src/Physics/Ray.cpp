@@ -9,8 +9,3 @@ void Ray::try_intersect(PhysicalObject& obj) {
 RayHit Ray::result() const {
     return m_hit;
 }
-
-std::stringstream Ray::to_stream() const {
-    auto ss = Object::to_stream();
-    return ss;
-}

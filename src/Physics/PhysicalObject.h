@@ -29,10 +29,9 @@ protected:
 
 public:
     /// Construct a new object at that position in the world.
-    PhysicalObject(const vecd pos, const vecd size, World& world);
+    PhysicalObject(const vecd& pos, const vecd& size, World& world);
 
-    virtual ~PhysicalObject() {
-    }
+    ~PhysicalObject() override = default;
 
     /// Marks this object as dead. The object will stop being displayed or updated
     /// and will eventually be cleaned up by the World.
@@ -59,12 +58,9 @@ public:
     /// Whether a Ray at given position would hit this object. Use `on_hit` to
     /// do stuff when the object is hit, as this object might get hit but is actually
     /// obscured or otherwise can't actually be hit at this time.
-    virtual bool is_hit(const vecd& pos) const override;
+    bool is_hit(const vecd& pos) const override;
     /// Callback called whenever the object is actually hit.
-    virtual void on_hit(const vecd&) override;
-
-    // Object interface
-    virtual std::stringstream to_stream() const override;
+    void on_hit(const vecd&) override;
 };
 
 #endif // PHYSICAL_OBJNAME_H

@@ -28,7 +28,7 @@ struct vec {
         return *this;
     }
 
-    vec(vec&& v)
+    vec(vec&& v) noexcept
         : x(std::move(v.x))
         , y(std::move(v.y)) {
         v.x = 0;
@@ -45,13 +45,13 @@ struct vec {
         , y(other.y) {
     }
 
-    template<class OtherT>
-    vec(const vec<OtherT>& other)
+    template<std::convertible_to<T> OtherT>
+    explicit vec(const vec<OtherT>& other)
         : x(T(other.x))
         , y(T(other.y)) {
     }
 
-    template<class OtherT>
+    template<std::convertible_to<T> OtherT>
     vec& operator=(const vec<OtherT>& other) {
         x = T(other.x);
         y = T(other.y);

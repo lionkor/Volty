@@ -17,13 +17,9 @@ protected:
 public:
     PhysicsObject(const vecd& pos, const vecd& size, World& world);
 
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
-
     // PhysicalObject interface
 protected:
-    virtual void update() override;
+    void update() override;
 };
 
 #endif // PHYSICSOBJNAME_H

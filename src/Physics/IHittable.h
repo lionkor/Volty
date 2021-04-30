@@ -12,11 +12,11 @@ class IHittable {
 public:
     std::size_t layer { 0 };
 
-    IHittable() { }
-    virtual ~IHittable() { }
+    IHittable() = default;
+    virtual ~IHittable() = default;
 
     virtual void on_hit(const vecd&) { }
-    virtual bool is_hit(const vecd&) const = 0;
+    [[nodiscard]] virtual bool is_hit(const vecd&) const = 0;
 
     bool operator<(const IHittable& other) const {
         return layer < other.layer;

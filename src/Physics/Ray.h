@@ -1,6 +1,7 @@
 ﻿#ifndef RAY_H
 #define RAY_H
 
+#include <utility>
 #include <vector>
 
 #include "Core/Object.h"
@@ -16,7 +17,7 @@ class RayHit : public Object {
     std::vector<IHittable*> m_hits_in_order;
 
 public:
-    RayHit() { }
+    RayHit() = default;
 
     /// Called by Ray when an object has been hit. Inserts the object into the hit-list
     /// according to their "depth" or "layer" in the scene.
@@ -39,18 +40,14 @@ class Ray : public Object {
 
 public:
     /// Sets up a new raycast at the position.
-    Ray(const vecd& pos)
-        : m_pos(pos) { }
+    explicit Ray(vecd pos)
+        : m_pos(std::move(pos)) { }
 
     /// Fires the Ray at the object. On hit, the hit object will be added
     /// to the internal RayHit instance.
     void try_intersect(PhysicalObject& obj);
     /// Get the results of the raycast operation. Invalidates this Ray.
-    RayHit result() const;
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
+    [[nodiscard]] RayHit result() const;
 };
 
 #endif // RAY_H

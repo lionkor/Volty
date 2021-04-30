@@ -22,14 +22,7 @@ private:
     Shape m_shape;
 
 public:
-    Collider(const Collider::Shape& shape = Shape::Rectangle);
-
-    //    OkResult set_points(const std::vector<vecd>& points);
-    //    OkResult set_radius(double radius);
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
+    explicit Collider(const Collider::Shape& shape = Shape::Rectangle);
 };
 
 #endif // COLLIDER_H

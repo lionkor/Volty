@@ -18,7 +18,7 @@ static constexpr size_t s_max_message_size = 128;
 // server-side representation of a client on UDP
 struct ServerSideUDPClient {
     SharedPtr<udp::endpoint> endpoint;
-    ServerSideUDPClient(udp::endpoint*&& ep = nullptr) {
+    explicit ServerSideUDPClient(udp::endpoint*&& ep = nullptr) {
         if (!ep) {
             report_warning("ep is nullptr");
             return;
@@ -61,7 +61,7 @@ private:
         size_t);
 
 public:
-    UDPServer(uint16_t port);
+    explicit UDPServer(uint16_t port);
 
     [[deprecated]] void send_to_all(SharedPtr<std::array<char, s_max_message_size>> data, size_t size);
     [[deprecated]] void send_to_all(SharedPtr<std::array<char, s_max_message_size>> data, size_t size, ServerSideUDPClient ignore);

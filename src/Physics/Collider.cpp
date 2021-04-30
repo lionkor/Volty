@@ -28,11 +28,3 @@ static std::ostream& operator<<(std::ostream& os, const Collider::Shape& shape) 
     }
     return os;
 }
-
-std::stringstream Collider::to_stream() const {
-    auto ss = Object::to_stream();
-    ss << "shape=" << m_shape << ";"
-       << "radius=" << m_radius << ";"
-       << "points=" << m_points << ";";
-    return ss;
-}
