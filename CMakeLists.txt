@@ -1,143 +1,62 @@
 ﻿cmake_minimum_required(VERSION 3.13)
 
-add_subdirectory("SFML")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
+    -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wformat -Wformat-overflow -Wnull-dereference \
+    -Wimplicit-fallthrough -Wmisleading-indentation -Wparentheses -Wunused-parameter -Wuninitialized \
+    -Wstringop-overflow -Wsuggest-attribute=const -Wconversion -Wduplicated-branches -Wduplicated-cond \
+    -Wfloat-equal -Wshadow -Wcast-qual -Wparentheses")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} -O3 -s")
 
-find_program(CCACHE_PROGRAM ccache)
-set(CMAKE_CXX_COMPILER "g++")
-set(CMAKE_C_COMPILER "gcc")
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -g -Wall -Wextra -Wpedantic -pedantic-errors -Wformat -Wformat-overflow -Wnull-dereference -Wimplicit-fallthrough -Wmisleading-indentation -Wparentheses -Wunused-parameter -Wuninitialized -Wstringop-overflow -Wsuggest-attribute=const -Wconversion -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wshadow -Wcast-qual -Wparentheses")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a -fconcepts -rdynamic")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -Wall -Wextra --pedantic")
+project(Volty)
 
-if (CCACHE_PROGRAM)
-    message(STATUS "ccache found, using it")
-    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
-endif()
+find_package(Lua 5.3 REQUIRED)
+find_package(SFML REQUIRED COMPONENTS system graphics audio window)
+find_package(fmt REQUIRED)
 
-#add_definitions(-DCPP_20)
+add_library(Volty SHARED
+        Core/Application.cpp
+        Core/GameWindow.cpp
+        Core/HID.cpp
+        Core/Math.cpp
+        Core/World.cpp
+        ECS/Component.cpp
+        ECS/Entity.cpp
+        ECS/ScriptableComponent.cpp
+        ECS/TileMapComponent.cpp
+        Events/Event.cpp
+        Events/EventDispatcher.cpp
+        Events/IEventReceiver.cpp
+        Modules/GenericModule.cpp
+        Modules/GenericModuleComponent.cpp
+        Physics/Collider.cpp
+        Physics/PhysicalObject.cpp
+        Physics/PhysicsObject.cpp
+        Physics/Ray.cpp
+        Rendering/Draw.cpp
+        Rendering/Drawable.cpp
+        Rendering/GuiElement.cpp
+        Rendering/ext_sf.cpp
+        Rendering/TextureAtlas.cpp
+        Utils/CsvLogger.cpp
+        Utils/LazyFile.cpp
+        Utils/ResourceManager.cpp
+        Utils/stl_ext.cpp
+        Utils/ArgsParser.cpp
+        Network/UDPServer.cpp
+        Network/UDPClient.cpp
+        Gui/GuiLayer.cpp
+        )
 
-project(Engine)
+target_include_directories(Volty PRIVATE
+        ${SFML_INCLUDE_DIR}
+        ${LUA_INCLUDE_DIR}
+        ${CMAKE_SOURCE_DIR}
+        )
 
-
-include_directories(Engine
-    "."
-    "./fmt/include"
-    "./doctest/doctest"
-    "./SFML/include"
-)
-
-if(DEBIAN_PATHS)
-    include_directories("/usr/include/lua5.3")
-    link_directories("/usr/lib/lua5.3")
-endif()
-
-add_library(Engine SHARED
-    Cellular/Cell.cpp
-    Core/Application.cpp
-    Core/GameWindow.cpp
-    Core/HID.cpp
-    Core/Math.cpp
-    Core/World.cpp
-    ECS/Component.cpp
-    ECS/Entity.cpp
-    ECS/ScriptableComponent.cpp
-    ECS/TileMapComponent.cpp
-    Events/Event.cpp
-    Events/EventDispatcher.cpp
-    Events/IEventReceiver.cpp
-    Modules/GenericModule.cpp
-    Modules/GenericModuleComponent.cpp
-    Physics/Collider.cpp
-    Physics/PhysicalObject.cpp
-    Physics/PhysicsObject.cpp
-    Physics/Ray.cpp
-    Rendering/Draw.cpp
-    Rendering/Drawable.cpp
-    Rendering/GuiElement.cpp
-    Rendering/ext_sf.cpp
-    Rendering/TextureAtlas.cpp
-    Unused/Tool.cpp
-    Utils/CsvLogger.cpp
-    Utils/LazyFile.cpp
-    Utils/ResourceManager.cpp
-    Utils/stl_ext.cpp
-    Utils/ArgsParser.cpp
-    Network/UDPServer.cpp
-    Network/UDPClient.cpp
-    Gui/GuiLayer.cpp
-
-    # fmt
-    fmt/src/format.cc
-    fmt/src/os.cc
-)
-
-target_link_libraries(Engine
-    tbb
-    sfml-graphics 
-    sfml-window 
-    sfml-system 
-    pthread
-    stdc++fs
-    dl
-)
-
-# TODO use find_package
-if(DEBIAN_PATHS)
-    target_link_libraries(Engine lua5.3)
-else()
-    target_link_libraries(Engine lua)
-endif()
-
-add_executable(antsim3
-    main.cpp
-)
-
-target_link_libraries(antsim3
-    Engine
-)
-
-add_executable(tilemap_editor tilemap_editor.cpp)
-target_link_libraries(tilemap_editor Engine)
-
-add_executable(cells cells.cpp)
-target_link_libraries(cells Engine)
-
-add_executable(testing testing.cpp)
-target_link_libraries(testing Engine)
-
-add_executable(orbits orbits.cpp)
-target_link_libraries(orbits Engine)
-
-add_executable(tests 
-    Tests/test_main.cpp
-    #Tests/test_core.cpp
-    Tests/test_ECS.cpp
-    #Tests/test_vec.cpp
-)
-target_link_libraries(tests Engine)
-
-add_executable(sandbox
-    sandbox.cpp
-)
-target_link_libraries(sandbox Engine)
-
-add_executable(mpgame-server
-    mpgame/mpgame-server.cpp
-)
-add_definitions(-DBOOST_ASIO_DISABLE_CONCEPTS)
-target_link_libraries(mpgame-server Engine boost_serialization boost_system)
-
-add_executable(mpgame-client
-    mpgame/mpgame-client.cpp
-    mpgame/ClientComponent.cpp
-    mpgame/PlayerComponent.cpp
-)
-target_link_libraries(mpgame-client Engine boost_serialization boost_system)
-
-add_executable(2dgame 2dgame.cpp)
-target_link_libraries(2dgame Engine boost_system tbb)
-
+target_link_libraries(Volty
+        ${SFML_LIBRARIES}
+        ${LUA_LIBRARIES}
+        )

@@ -180,15 +180,15 @@ private:
 public:
     Text(const vecd& pos, uint32_t font_size, const std::string& text, const sf::Font& font);
 
-    void set_position(const vecd& new_pos) { m_position = new_pos; }
-    void set_rotation(double new_rot) { }
-    void set_color(Color color);
-    void set_scale(double) { }
-    vecd position() const { return m_position; }
-    double rotation() const { return 0.0; }
-    Color color() const { return { m_text.getFillColor().r, m_text.getFillColor().g, m_text.getFillColor().b, m_text.getFillColor().a }; }
-    double scale() const { return 1.0; }
-    void draw(sf::RenderTarget&) const;
+    void set_position(const vecd& new_pos) override { m_position = new_pos; }
+    void set_rotation(double) override { }
+    void set_color(Color color) override;
+    void set_scale(double) override { }
+    vecd position() const override { return m_position; }
+    double rotation() const override { return 0.0; }
+    Color color() const override { return { m_text.getFillColor().r, m_text.getFillColor().g, m_text.getFillColor().b, m_text.getFillColor().a }; }
+    double scale() const override { return 1.0; }
+    void draw(sf::RenderTarget&) const override;
     void set_text(const std::string& text) { m_text.setString(text); }
     void set_font(const sf::Font& font) { m_font = font; }
     vecd extents() const;
