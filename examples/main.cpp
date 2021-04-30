@@ -1,6 +1,6 @@
 #include "Volty.h"
 
 int main() {
-    Application app("Volty Example", { 800, 600 }, true, "../Data/res.list");
+    Application app("Volty Example", { 2560, 1440 }, true, "../Data/res.list");
     return app.run();
 }
