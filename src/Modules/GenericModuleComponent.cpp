@@ -6,8 +6,14 @@
 #define DLSYM dlsym
 #define DLCLOSE dlclose
 #define DLERROR dlerror
+#elif defined(WIN32)
+#include <windows.h>
+#define DLOPEN LoadLibrary
+#define DLSYM GetProcAddress
+#define DLCLOSE FreeLibrary
+#define DLERROR
 #else
-#error "currently not supported, please implement"
+#error "platform not supported, please implement dll/so handling"
 #endif
 
 #include <chrono>
