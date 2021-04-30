@@ -6,7 +6,11 @@
 GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll_name)
     : Component(e) {
     // unsafe
+#if defined(__linux__)
     m_dll_handle = DLOPEN(dll_name.c_str(), RTLD_NOW | RTLD_GLOBAL);
+#elif defined(WIN32)
+    m_dll_handle = DLOPEN(dll_name.c_str());
+#endif
     if (!m_dll_handle) {
         report_error(DLERROR());
     }
@@ -48,8 +52,14 @@ GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll
         on_mouse_move_fn = [&](C_vec_d) {};
     }
 
+#if defined(__linux__)
     struct stat meta { };
     auto ret = stat(dll_name.c_str(), &meta);
+#elif defined(WIN32)
+    struct _stat meta { };
+    auto ret = _stat(dll_name.c_str(), &meta);
+#endif
+
     if (ret != 0) {
         report_error("couldn't stat dynamic module file \"{}\": {}", dll_name, strerror(errno));
         return;

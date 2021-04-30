@@ -15,7 +15,7 @@
 #define DLHANDLE void*
 #elif defined(WIN32)
 #include <windows.h>
-#define DLOPEN LoadLibrary
+#define DLOPEN LoadLibraryA
 #define DLSYM GetProcAddress
 #define DLCLOSE FreeLibrary
 #define DLERROR() "dll error"
