@@ -35,11 +35,7 @@ jobs:
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: libVolty.so
-          path: ${{github.workspace}}/build-linux/libVolty.so
-
-      - name: Archive artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: example.elf
-          path: ${{github.workspace}}/build-linux/example
+          name: files-linux
+          path: |
+              ${{github.workspace}}/build-linux/*.so
+              ${{github.workspace}}/build-linux/example

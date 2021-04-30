@@ -39,13 +39,9 @@ jobs:
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: libVolty.dll
-          path: ${{github.workspace}}/build-windows/Release/Volty.dll
-
-      - name: Archive artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: example.exe
-          path: ${{github.workspace}}/build-windows/Release/example.exe
+          name: files-windows
+          path: |
+              ${{github.workspace}}/build-windows/Release/*.dll
+              ${{github.workspace}}/build-windows/Release/*.exe
 
 
