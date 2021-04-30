@@ -7,7 +7,7 @@ Application::Application(const std::string& title, sf::Vector2u size, bool fulls
 }
 
 int Application::run() {
-    report("starting application with \n\tWorld: {}\n\tWindow: ", *m_world, *m_window);
+    report("starting application with \n\tWorld: {}\n\tWindow: {}", *m_world, *m_window);
 
     sf::Clock dt_clock;
     while (m_window->isOpen()) {

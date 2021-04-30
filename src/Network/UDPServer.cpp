@@ -24,7 +24,7 @@ void UDPServer::start_receive() {
             boost::asio::placeholders::bytes_transferred));
 }
 
-void UDPServer::handle_send(RefPtr<std::array<char, s_max_message_size>> msg,
+void UDPServer::handle_send(RefPtr<std::array<char, s_max_message_size>>,
     const boost::system::error_code& error,
     size_t) {
     ASSERT(!error);

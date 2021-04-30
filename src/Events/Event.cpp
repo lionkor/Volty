@@ -10,9 +10,3 @@ void Event::accept() {
 bool Event::accepted() const {
     return m_accepted.load();
 }
-
-std::stringstream Event::to_stream() const {
-    auto ss = Object::to_stream();
-    ss << "accepted=" << (m_accepted ? "true" : "false") << ";";
-    return ss;
-}

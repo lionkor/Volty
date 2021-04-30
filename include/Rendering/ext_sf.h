@@ -13,7 +13,7 @@ class Color;
 namespace ext::sf {
 template<std::convertible_to<float> T>
 inline ::sf::Vector2f to_sf_vec2f(const vec<T>& f) {
-    return ::sf::Vector2f(f.x, f.y);
+    return ::sf::Vector2f(static_cast<float>(f.x), static_cast<float>(f.y));
 }
 template<std::convertible_to<float> T>
 inline ::sf::Vector2f to_sf_vec2f(T a, T b) {

@@ -1,7 +1,7 @@
 ﻿#include "Physics/PhysicalObject.h"
 #include "Core/World.h"
 
-PhysicalObject::PhysicalObject(const vecd pos, const vecd size, World& world)
+PhysicalObject::PhysicalObject(const vecd& pos, const vecd& size, World& world)
     : m_rectangle(pos, size)
     , m_world(world) {
 }
@@ -47,9 +47,4 @@ bool PhysicalObject::is_hit(const vecd& pos) const {
 
 void PhysicalObject::on_hit(const vecd&) {
     report_trace("HIT!");
-}
-
-std::stringstream PhysicalObject::to_stream() const {
-    auto ss = Object::to_stream();
-    return ss;
 }

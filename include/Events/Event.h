@@ -13,6 +13,11 @@ private:
 public:
     Event();
 
+    bool operator==(const Event& ev) {
+        // TODO: this sucks, make it better
+        return &ev == this;
+    }
+
     void accept();
     [[nodiscard]] bool accepted() const;
 };

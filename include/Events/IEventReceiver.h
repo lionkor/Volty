@@ -16,6 +16,10 @@ public:
     explicit IEventReceiver(EventDispatcher& dispatcher);
     virtual ~IEventReceiver();
 
+    bool operator==(const IEventReceiver& disp) {
+        return this == &disp; // TODO: this sucks.
+    }
+
     // Will reveice all events. Events received here are guaranteed to not yet be accepted.
     virtual void handle(Event&);
 };

@@ -4,7 +4,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
     -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wformat -Wformat-overflow -Wnull-dereference \
     -Wimplicit-fallthrough -Wmisleading-indentation -Wparentheses -Wunused-parameter -Wuninitialized \
     -Wstringop-overflow -Wsuggest-attribute=const -Wconversion -Wduplicated-branches -Wduplicated-cond \
-    -Wfloat-equal -Wshadow -Wcast-qual -Wparentheses")
+    -Wno-unused-function -Wfloat-equal -Wshadow -Wcast-qual -Wparentheses")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} -O3 -s")
 
@@ -13,8 +13,9 @@ set(CMAKE_CXX_STANDARD 20)
 project(Volty)
 
 find_package(Lua 5.3 REQUIRED)
-find_package(SFML REQUIRED COMPONENTS system graphics audio window)
+find_package(SFML COMPONENTS system graphics window audio REQUIRED)
 find_package(fmt REQUIRED)
+find_package(TBB REQUIRED tbb)
 
 add_library(Volty SHARED
         include/Core.h
@@ -105,6 +106,14 @@ target_include_directories(Volty PRIVATE
         )
 
 target_link_libraries(Volty
-        ${SFML_LIBRARIES}
+        sfml-system
+        sfml-window
+        sfml-graphics
+        sfml-audio
+        tbb
         ${LUA_LIBRARIES}
         )
+
+add_executable(example examples/main.cpp)
+target_link_libraries(example Volty)
+target_include_directories(example PRIVATE include)

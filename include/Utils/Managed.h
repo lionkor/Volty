@@ -13,7 +13,7 @@ using OwnPtr = std::unique_ptr<Args...>;
 template<typename... Args>
 using RefPtr = std::shared_ptr<Args...>;
 
-#define make_refptr std::make_shared;
+#define make_refptr std::make_shared
 
 template<typename... Args>
 using WeakPtr = std::weak_ptr<Args...>;

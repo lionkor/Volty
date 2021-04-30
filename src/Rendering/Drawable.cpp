@@ -6,7 +6,7 @@
 
 #include "Utils/Random.h"
 
-#include "ext_sf.h"
+#include "Rendering/ext_sf.h"
 
 const Color Color::Red(255, 0, 0, 255);
 const Color Color::Green(0, 255, 0, 255);

@@ -9,6 +9,7 @@
 #include <vector>
 
 class Widget;
+class Application;
 
 class GuiLayer : public Object {
     OBJNAME(GuiLayer)

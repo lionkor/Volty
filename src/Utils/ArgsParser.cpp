@@ -43,8 +43,6 @@ std::ostream& operator<<(std::ostream& os, const std::pair<std::string, std::ref
 }
 
 bool ArgsParser::parse() {
-    report("args: {}", m_args);
-    report("int args: {}", m_int_args);
     for (size_t i = 0; i < m_args.size(); ++i) {
         auto arg = m_args[i];
         bool short_arg;
