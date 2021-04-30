@@ -88,7 +88,7 @@ add_library(Volty SHARED
         src/Utils/stl_ext.cpp
         )
 
-target_include_directories(Volty PRIVATE
+target_include_directories(Volty PUBLIC
         ${SFML_INCLUDE_DIR}
         ${LUA_INCLUDE_DIR}
         ${CMAKE_SOURCE_DIR}/include
