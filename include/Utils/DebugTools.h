@@ -2,15 +2,14 @@
 #define DEBUGTOOLS_H
 
 #include <cstdio>
+#include <cstdlib>
+#include <filesystem>
 #include <iostream>
-#include <stdlib.h>
-// TODO: common.h, precompiled
+
 #define FMT_HEADER_ONLY
 #include <fmt/core.h>
 #include <fmt/format-inl.h>
 #include <fmt/ostream.h>
-
-#include <experimental/source_location>
 
 static const char* const ANSI_RESET = "\u001b[0m";
 
@@ -45,91 +44,15 @@ static const char* const ANSI_UNDERLINE = "\u001b[4m";
 
 #endif // NOTIMPL
 
-#define FILE_C_STRING std::string(__FILE__).data()
-#define FILENAME (std::string(basename(FILE_C_STRING)))
+#define FILENAME std::filesystem::path(__FILE__).filename().string()
 #define nameof(x) #x
-
-#define HERE() fmt::format("{}:{}, {}", FILENAME, __LINE__, __FUNCTION__)
 
 namespace impl {
 
-#ifndef STRIP_ALL
-
 template<typename... Args>
 static inline void report_impl(const char* format, Args&&... args) {
     fmt::print(format, std::forward<Args>(args)...);
 }
-
-template<typename... Args>
-static inline void report_info_impl(const std::experimental::source_location& location, const std::string& format, Args&&... args) {
-    impl::report_impl("[INFO] in {}:{} in {}: {}\n", basename(const_cast<char*>(location.file_name())), location.line(), location.function_name(), fmt::format(format, std::forward<Args>(args)...));
-}
-
-template<typename... Args>
-static inline void report_trace_impl(const std::experimental::source_location& location, const std::string& format, Args&&... args) {
-    impl::report_impl("[TRACE] in {}:{} in {}: {}\n", basename(const_cast<char*>(location.file_name())), location.line(), location.function_name(), fmt::format(format, std::forward<Args>(args)...));
-}
-
-template<typename... Args>
-static inline void report_warning_impl(const std::experimental::source_location& location, const std::string& format, Args&&... args) {
-    impl::report_impl("{}{}[WARNING] in {}:{} in {}: {}{}\n", ANSI_RESET, ANSI_YELLOW, basename(const_cast<char*>(location.file_name())), location.line(), location.function_name(), fmt::format(format, std::forward<Args>(args)...), ANSI_RESET);
-}
-
-template<typename... Args>
-static inline void report_error_impl(const std::experimental::source_location& location, const std::string& format, Args&&... args) {
-    impl::report_impl("{}{}[ERROR] in {}:{} in {}: {}{}\n", ANSI_RESET, ANSI_RED, basename(const_cast<char*>(location.file_name())), location.line(), location.function_name(), fmt::format(format, std::forward<Args>(args)...), ANSI_RESET);
-}
-
-static inline void report_trace_impl(const std::experimental::source_location& location, const std::string& str) {
-    impl::report_impl("[TRACE] in {}:{} in {}: {}\n", basename(const_cast<char*>(location.file_name())), location.line(), location.function_name(), str);
-}
-
-static inline void report_warning_impl(const std::experimental::source_location& location, const std::string& str) {
-    impl::report_impl("{}{}[WARNING] in {}:{} in {}: {}{}\n", ANSI_RESET, ANSI_YELLOW, basename(const_cast<char*>(location.file_name())), location.line(), location.function_name(), str, ANSI_RESET);
-}
-
-static inline void report_error_impl(const std::experimental::source_location& location, const std::string& str) {
-    impl::report_impl("{}{}[ERROR] in {}:{} in {}: {}{}\n", ANSI_RESET, ANSI_RED, basename(const_cast<char*>(location.file_name())), location.line(), location.function_name(), str, ANSI_RESET);
-}
-
-#else // STRIP_ALL
-template<typename... Args>
-static inline void report_impl(const char* format, Args&&... args) {
-    fmt::print(format, std::forward<Args>(args)...);
-}
-
-template<typename... Args>
-static inline void report_info_impl(const std::experimental::source_location& location, const std::string& format, Args&&... args) {
-    impl::report_impl("[INFO] in {}: {}\n", location.function_name(), fmt::format(format, std::forward<Args>(args)...));
-}
-
-template<typename... Args>
-static inline void report_trace_impl(const std::experimental::source_location& location, const std::string& format, Args&&... args) {
-    impl::report_impl("[TRACE] in {}: {}\n", location.function_name(), fmt::format(format, std::forward<Args>(args)...));
-}
-
-template<typename... Args>
-static inline void report_warning_impl(const std::experimental::source_location& location, const std::string& format, Args&&... args) {
-    impl::report_impl("{}{}[WARNING] in {}: {}{}\n", ANSI_RESET, ANSI_YELLOW, location.function_name(), fmt::format(format, std::forward<Args>(args)...), ANSI_RESET);
-}
-
-template<typename... Args>
-static inline void report_error_impl(const std::experimental::source_location& location, const std::string& format, Args&&... args) {
-    impl::report_impl("{}{}[ERROR] in {}: {}{}\n", ANSI_RESET, ANSI_RED, location.function_name(), fmt::format(format, std::forward<Args>(args)...), ANSI_RESET);
-}
-
-static inline void report_trace_impl(const std::experimental::source_location& location, const std::string& str) {
-    impl::report_impl("[TRACE] in {}: {}\n", location.function_name(), str);
-}
-
-static inline void report_warning_impl(const std::experimental::source_location& location, const std::string& str) {
-    impl::report_impl("{}{}[WARNING] in {}: {}{}\n", ANSI_RESET, ANSI_YELLOW, location.function_name(), str, ANSI_RESET);
-}
-
-static inline void report_error_impl(const std::experimental::source_location& location, const std::string& str) {
-    impl::report_impl("{}{}[ERROR] in {}: {}{}\n", ANSI_RESET, ANSI_RED, location.function_name(), str, ANSI_RESET);
-}
-#endif
 
 }
 
@@ -137,18 +60,17 @@ static inline void report_error_impl(const std::experimental::source_location& l
 #define TRACE 0
 #endif
 #if TRACE
-#define report_trace(...) impl::report_trace_impl(std::experimental::source_location::current(), __VA_ARGS__)
+#define report_trace(...) impl::report_impl("[TRACE] in {}:{} in {}: {}\n", filename, line, func, fmt::format(__VA_ARGS__));
 #else
 #define report_trace(...)
 #endif
 
-#if 1
-#define report(...) impl::report_info_impl(std::experimental::source_location::current(), __VA_ARGS__)
-#else
-#define report(...)
-#endif
-#define report_warning(...) impl::report_warning_impl(std::experimental::source_location::current(), __VA_ARGS__)
-#define report_error(...) impl::report_error_impl(std::experimental::source_location::current(), __VA_ARGS__)
+#define report(...) \
+    impl::report_impl("[INFO] in {}:{} in {}: {}\n", FILENAME, __LINE__, __func__, fmt::format(__VA_ARGS__));
+#define report_warning(...) \
+    impl::report_impl("{}{}[WARNING] in {}:{} in {}: {}{}\n", ANSI_RESET, ANSI_YELLOW, FILENAME, __LINE__, __func__, fmt::format(__VA_ARGS__), ANSI_RESET);
+#define report_error(...) \
+    impl::report_impl("{}{}[ERROR] in {}:{} in {}: {}{}\n", ANSI_RESET, ANSI_RED, FILENAME, __LINE__, __func__, fmt::format(__VA_ARGS__), ANSI_RESET);
 
 #define report_function() report("{}{}{}{}{}", ANSI_RESET, ANSI_UNDERLINE, __PRETTY_FUNCTION__, ANSI_RESET, " was called!")
 
