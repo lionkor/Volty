@@ -4,7 +4,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
     -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wformat -Wformat-overflow -Wnull-dereference \
     -Wimplicit-fallthrough -Wmisleading-indentation -Wparentheses -Wunused-parameter -Wuninitialized \
     -Wstringop-overflow -Wsuggest-attribute=const -Wconversion -Wduplicated-branches -Wduplicated-cond \
-    -Wno-unused-function -Wfloat-equal -Wshadow -Wcast-qual -Wparentheses")
+    -Wno-unused-function -Wfloat-equal -Wshadow -Wcast-qual -Wparentheses -pthread")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} -O3 -s")
 
