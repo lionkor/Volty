@@ -1,6 +1,6 @@
 name: CMake Windows Build
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 env:
   BUILD_TYPE: Release
@@ -8,20 +8,20 @@ env:
 jobs:
   windows-build:
     runs-on: windows-latest
-    
+
     steps:
       - uses: actions/checkout@v2
         with:
-            submodules: 'true'
-      
+          submodules: 'true'
+
       - name: Restore artifacts, or run vcpkg, build and cache artifacts
         uses: lukka/run-vcpkg@main
         id: runvcpkg
         with:
-            vcpkgArguments: 'lua sfml'
-            vcpkgDirectory: '${{ runner.workspace }}/b/vcpkg'
-            vcpkgGitCommitId: '75522bb1f2e7d863078bcd06322348f053a9e33f'
-            vcpkgTriplet: 'x64-windows'
+          vcpkgArguments: 'lua sfml tbb'
+          vcpkgDirectory: '${{ runner.workspace }}/b/vcpkg'
+          vcpkgGitCommitId: '75522bb1f2e7d863078bcd06322348f053a9e33f'
+          vcpkgTriplet: 'x64-windows'
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{github.workspace}}/build-windows
