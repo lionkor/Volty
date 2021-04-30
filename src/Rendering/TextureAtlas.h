@@ -15,7 +15,7 @@ private:
 public:
     TextureAtlas(Managed<sf::Texture> atlas, size_t subtexture_size);
 
-    [[nodiscard]] std::pair<vec<float> /* top left */, vec<float> /* bottom right */> subtexture_coords(vec<size_t> subtexture_index) const;
+    [[nodiscard]] std::pair<vec<float> /* top left */, vec<float> /* bottom right */> subtexture_coords(const vec<size_t>& subtexture_index) const;
 
     sf::Texture* texture() { return m_atlas.get(); }
 

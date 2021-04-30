@@ -11,7 +11,7 @@ TextureAtlas::TextureAtlas(Managed<sf::Texture> atlas, size_t subtexture_size)
     }
 }
 
-std::pair<vec<float>, vec<float>> TextureAtlas::subtexture_coords(vec<size_t> subtexture_index) const {
+std::pair<vec<float>, vec<float>> TextureAtlas::subtexture_coords(const vec<size_t>& subtexture_index) const {
     return {
         vec<float>(float(subtexture_index.x * m_subtexture_size), float(subtexture_index.y * m_subtexture_size)),
         vec<float>(float((subtexture_index.x + 1) * m_subtexture_size), float((subtexture_index.y + 1) * m_subtexture_size))
