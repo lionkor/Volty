@@ -65,7 +65,12 @@ GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll
         return;
     }
 
+#if defined(__linux__)
     std::string last_changed = std::ctime(&meta.st_mtim.tv_sec);
+#elif defined(WIN32)
+    std::string last_changed = std::ctime(&meta.st_mtime.tv_sec);
+#endif
+
     // ctime puts \n at the end, lets remove it
     last_changed.erase(last_changed.size() - 1);
     report(fmt::format("loaded dynamic module \"{}\" version {} (last changed: {})", dll_name, version_fn(), last_changed).c_str());
