@@ -17,43 +17,43 @@ find_package(SFML REQUIRED COMPONENTS system graphics audio window)
 find_package(fmt REQUIRED)
 
 add_library(Volty SHARED
-        Core/Application.cpp
-        Core/GameWindow.cpp
-        Core/HID.cpp
-        Core/Math.cpp
-        Core/World.cpp
-        ECS/Component.cpp
-        ECS/Entity.cpp
-        ECS/ScriptableComponent.cpp
-        ECS/TileMapComponent.cpp
-        Events/Event.cpp
-        Events/EventDispatcher.cpp
-        Events/IEventReceiver.cpp
-        Modules/GenericModule.cpp
-        Modules/GenericModuleComponent.cpp
-        Physics/Collider.cpp
-        Physics/PhysicalObject.cpp
-        Physics/PhysicsObject.cpp
-        Physics/Ray.cpp
-        Rendering/Draw.cpp
-        Rendering/Drawable.cpp
-        Rendering/GuiElement.cpp
-        Rendering/ext_sf.cpp
-        Rendering/TextureAtlas.cpp
-        Utils/CsvLogger.cpp
-        Utils/LazyFile.cpp
-        Utils/ResourceManager.cpp
-        Utils/stl_ext.cpp
-        Utils/ArgsParser.cpp
-        Network/UDPServer.cpp
-        Network/UDPClient.cpp
-        Gui/GuiLayer.cpp
+        src/Core/Application.cpp
+        src/Core/GameWindow.cpp
+        src/Core/HID.cpp
+        src/Core/Math.cpp
+        src/Core/World.cpp
+        src/ECS/Component.cpp
+        src/ECS/Entity.cpp
+        src/ECS/ScriptableComponent.cpp
+        src/ECS/TileMapComponent.cpp
+        src/Events/Event.cpp
+        src/Events/EventDispatcher.cpp
+        src/Events/IEventReceiver.cpp
+        src/Modules/GenericModule.cpp
+        src/Modules/GenericModuleComponent.cpp
+        src/Physics/Collider.cpp
+        src/Physics/PhysicalObject.cpp
+        src/Physics/PhysicsObject.cpp
+        src/Physics/Ray.cpp
+        src/Rendering/Draw.cpp
+        src/Rendering/Drawable.cpp
+        src/Rendering/GuiElement.cpp
+        src/Rendering/ext_sf.cpp
+        src/Rendering/TextureAtlas.cpp
+        src/Utils/CsvLogger.cpp
+        src/Utils/LazyFile.cpp
+        src/Utils/ResourceManager.cpp
+        src/Utils/stl_ext.cpp
+        src/Utils/ArgsParser.cpp
+        src/Network/UDPServer.cpp
+        src/Network/UDPClient.cpp
+        src/Gui/GuiLayer.cpp
         )
 
 target_include_directories(Volty PRIVATE
         ${SFML_INCLUDE_DIR}
         ${LUA_INCLUDE_DIR}
-        ${CMAKE_SOURCE_DIR}
+        ${CMAKE_SOURCE_DIR}/src
         )
 
 target_link_libraries(Volty
