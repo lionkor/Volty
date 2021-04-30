@@ -146,5 +146,5 @@ void Text::draw(sf::RenderTarget& window) const {
 }
 
 vecd Text::extents() const {
-    return vecd(m_text.getLocalBounds().getSize());
+    return vecd(m_text.getLocalBounds().width, m_text.getLocalBounds().height);
 }

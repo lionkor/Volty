@@ -15,10 +15,3 @@ int Application::run() {
     }
     return 0;
 }
-
-std::stringstream Application::to_stream() const {
-    TS_BEGIN(Object);
-    TS_PROP_S("window", *m_window);
-    TS_PROP_S("world", *m_world);
-    TS_END();
-}

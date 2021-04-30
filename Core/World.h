@@ -41,7 +41,7 @@ private:
 
 public:
     explicit World(Application& app);
-    virtual ~World() { }
+    virtual ~World() = default;
 
     /// Takes ownership of the passed (new-allocated) pointer `obj`.
     WeakPtr<Entity> add_entity(const vecd& pos = {});
@@ -70,10 +70,6 @@ public:
 
     /// Updates the world and calls into the window to update, too.
     void update(GameWindow&, float);
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
 };
 
 #endif // WORLD_H

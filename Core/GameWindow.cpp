@@ -149,10 +149,3 @@ void GameWindow::set_title(const std::string& title) {
     m_title = title;
     setTitle(title);
 }
-
-std::stringstream GameWindow::to_stream() const {
-    TS_BEGIN(Object);
-    TS_PROP_S("width", getSize().x);
-    TS_PROP_S("height", getSize().y);
-    TS_END();
-}

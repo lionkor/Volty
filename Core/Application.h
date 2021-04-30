@@ -41,10 +41,6 @@ public:
     [[nodiscard]] WeakPtr<GuiElement> add_gui_element(Args&&... args);
 
     [[nodiscard]] int run();
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
 };
 
 template<typename... Args>

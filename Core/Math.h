@@ -1,9 +1,11 @@
 ﻿#ifndef MATH_H
 #define MATH_H
 
+#include <concepts>
+
 namespace Math {
 
-template<class FloatT>
+template<std::floating_point FloatT>
 decltype(auto) lerp(FloatT a, FloatT b, FloatT f) {
     return a + f * (b - a);
 }

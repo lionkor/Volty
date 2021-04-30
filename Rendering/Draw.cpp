@@ -23,7 +23,7 @@ void DrawSurface::finalize() {
     // if it takes too long, we could update until a certain amount of time has passed,
     // or just do this in a seperate thread
     auto cached_view = m_window.getView();
-    m_gui_view.reset(sf::FloatRect(0, 0, m_window.getSize().x, m_window.getSize().y));
+    m_gui_view.reset(sf::FloatRect(0, 0, static_cast<float>(m_window.getSize().x), static_cast<float>(m_window.getSize().y)));
     m_window.setView(m_gui_view);
     for (auto& layer : m_window.gui_layers()) {
         layer->on_draw(m_window);

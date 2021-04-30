@@ -93,12 +93,3 @@ void World::update(GameWindow& window, float dt) {
 
     cleanup_destroyed(surface);
 }
-
-std::stringstream World::to_stream() const {
-    TS_BEGIN(Object);
-    TS_PROP_M(m_entities.size());
-    TS_PROP_M(m_entities_to_add.size());
-    TS_PROP_M(m_update_interval_ms);
-    TS_PROP_M(m_application.uuid());
-    TS_END();
-}

@@ -8,7 +8,7 @@ static inline HID::MouseButton from_sf_mouse_button(sf::Mouse::Button button) {
 }
 
 HID::MouseAction HID::from_sf_mouse_action(sf::Event event) {
-    HID::MouseAction action;
+    HID::MouseAction action {};
     action.button = from_sf_mouse_button(event.mouseButton.button);
     switch (event.type) {
     case sf::Event::MouseMoved:

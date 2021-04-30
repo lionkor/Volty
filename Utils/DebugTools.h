@@ -205,7 +205,6 @@ template<typename T>
 concept IterableContainer = requires(T a) {
     a.begin();
     a.end();
-    a[0];
 };
 
 template<typename T>

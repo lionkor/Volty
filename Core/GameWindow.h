@@ -44,7 +44,7 @@ class GameWindow
     friend class Application;
 
 protected:
-    sf::Event m_event;
+    sf::Event m_event {};
     sf::Vector2i m_mouse_pos;
     bool m_mmb_pressed { false };
     DrawSurface m_surface;
@@ -100,10 +100,6 @@ public:
     const std::vector<SharedPtr<GuiLayer>>& gui_layers() const {
         return m_gui_layers;
     }
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
 };
 
 template<typename T, typename... Args>
