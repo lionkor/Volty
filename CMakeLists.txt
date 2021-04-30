@@ -17,6 +17,54 @@ find_package(SFML REQUIRED COMPONENTS system graphics audio window)
 find_package(fmt REQUIRED)
 
 add_library(Volty SHARED
+        include/Core.h
+        include/Core/Application.h
+        include/Core/GameWindow.h
+        include/Core/HID.h
+        include/Core/Math.h
+        include/Core/Object.h
+        include/Core/World.h
+        include/ECS.h
+        include/ECS/Component.h
+        include/ECS/Entity.h
+        include/ECS/ScriptableComponent.h
+        include/ECS/TileMapComponent.h
+        include/Events/Event.h
+        include/Events/EventDispatcher.h
+        include/Events/IEventReceiver.h
+        include/Gui/GuiLayer.h
+        include/Modules.h
+        include/Modules/GenericModule.h
+        include/Modules/GenericModuleComponent.h
+        include/Network.h
+        include/Network/UDPClient.h
+        include/Network/UDPServer.h
+        include/Physics/Collider.h
+        include/Physics/IHittable.h
+        include/Physics/PhysicalObject.h
+        include/Physics/PhysicsObject.h
+        include/Physics/Ray.h
+        include/Physics/vec.h
+        include/Rendering.h
+        include/Rendering/Draw.h
+        include/Rendering/Drawable.h
+        include/Rendering/GuiElement.h
+        include/Rendering/TextureAtlas.h
+        include/Rendering/ext_sf.h
+        include/Utils.h
+        include/Utils/ArgsParser.h
+        include/Utils/Common.h
+        include/Utils/Constants.h
+        include/Utils/CsvLogger.h
+        include/Utils/DebugTools.h
+        include/Utils/LazyFile.h
+        include/Utils/Managed.h
+        include/Utils/Mutexed.h
+        include/Utils/Random.h
+        include/Utils/ResourceManager.h
+        include/Utils/Result.h
+        include/Utils/stl_ext.h
+        include/Volty.h
         src/Core/Application.cpp
         src/Core/GameWindow.cpp
         src/Core/HID.cpp
@@ -29,8 +77,11 @@ add_library(Volty SHARED
         src/Events/Event.cpp
         src/Events/EventDispatcher.cpp
         src/Events/IEventReceiver.cpp
+        src/Gui/GuiLayer.cpp
         src/Modules/GenericModule.cpp
         src/Modules/GenericModuleComponent.cpp
+        src/Network/UDPClient.cpp
+        src/Network/UDPServer.cpp
         src/Physics/Collider.cpp
         src/Physics/PhysicalObject.cpp
         src/Physics/PhysicsObject.cpp
@@ -38,16 +89,13 @@ add_library(Volty SHARED
         src/Rendering/Draw.cpp
         src/Rendering/Drawable.cpp
         src/Rendering/GuiElement.cpp
-        src/Rendering/ext_sf.cpp
         src/Rendering/TextureAtlas.cpp
+        src/Rendering/ext_sf.cpp
+        src/Utils/ArgsParser.cpp
         src/Utils/CsvLogger.cpp
         src/Utils/LazyFile.cpp
         src/Utils/ResourceManager.cpp
         src/Utils/stl_ext.cpp
-        src/Utils/ArgsParser.cpp
-        src/Network/UDPServer.cpp
-        src/Network/UDPClient.cpp
-        src/Gui/GuiLayer.cpp
 
         include/Core.h
         include/ECS.h
