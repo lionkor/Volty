@@ -2,13 +2,13 @@
 #define EVENT_H
 
 #include "Core/Object.h"
-#include <boost/atomic.hpp>
+#include <atomic>
 
 class Event : public Object {
     OBJNAME(Event)
 
 private:
-    boost::atomic<bool> m_accepted { false };
+    std::atomic<bool> m_accepted { false };
 
 public:
     Event();
