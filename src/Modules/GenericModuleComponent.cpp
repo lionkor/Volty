@@ -60,7 +60,7 @@ GenericModuleComponent::GenericModuleComponent(Entity& e, const std::string& dll
         on_mouse_move_fn = [&](C_vec_d) {};
     }
 
-    struct stat meta;
+    struct stat meta { };
     auto ret = stat(dll_name.c_str(), &meta);
     if (ret != 0) {
         report_error("couldn't stat dynamic module file \"{}\": {}", dll_name, strerror(errno));

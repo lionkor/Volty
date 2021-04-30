@@ -24,7 +24,7 @@ public:
     GenericModuleComponent(Entity& e, const std::string& dll_name);
     ~GenericModuleComponent();
 
-    virtual void on_update(float dt) override;
+    void on_update(float dt) override;
 };
 
 #endif // GENERICMODULECOMPONENT_H

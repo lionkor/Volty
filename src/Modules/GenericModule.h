@@ -16,12 +16,12 @@ typedef void C_Entity;
 
 #ifdef __cplusplus
 #define EXPORT __attribute__((visibility("default")))
+#include <cstddef>
 extern "C" {
 #else
 #define EXPORT
-#endif
-
 #include <stddef.h>
+#endif
 
 typedef struct {
     double x;
