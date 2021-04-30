@@ -11,6 +11,14 @@
 #include <fmt/format-inl.h>
 #include <fmt/ostream.h>
 
+#if defined(__gnu_linux__)
+#define _PRETTY_FUNCTION __PRETTY_FUNCTION__
+#elif defined(WIN32)
+#define _PRETTY_FUNCTION __FUNCSIG__
+#else
+#define _PRETTY_FUNCTION __func__
+#end
+
 static const char* const ANSI_RESET = "\u001b[0m";
 
 static const char* const ANSI_BLACK = "\u001b[30m";
