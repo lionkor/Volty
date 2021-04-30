@@ -6,17 +6,20 @@
 #include "TextureAtlas.h"
 
 #include <SFML/Graphics.hpp>
+#include <cstddef>
+#include <cstdint>
 #include <functional>
 
 struct Color final {
     uint8_t r, g, b, a;
     Color() noexcept = default;
-    Color(uint8_t _r, uint8_t _g, uint8_t _b, uint8_t _a) noexcept
+    constexpr Color(uint8_t _r, uint8_t _g, uint8_t _b, uint8_t _a) noexcept
         : r(_r)
         , g(_g)
         , b(_b)
         , a(_a) {
     }
+
     static const Color Red;
     static const Color Green;
     static const Color Blue;
@@ -24,6 +27,13 @@ struct Color final {
     static const Color Black;
     static const Color Transparent;
 };
+
+constexpr const Color Color::Red = { 255, 0, 0, 255 };
+constexpr const Color Color::Green = { 0, 255, 0, 255 };
+constexpr const Color Color::Blue = { 0, 0, 255, 255 };
+constexpr const Color Color::White = { 255, 255, 255, 255 };
+constexpr const Color Color::Black = { 0, 0, 0, 255 };
+constexpr const Color Color::Transparent = { 0, 0, 0, 0 };
 
 inline std::ostream& operator<<(std::ostream& os, const Color& color) {
     return os << "(" << int(color.r) << ", " << int(color.g) << ", " << int(color.b) << ", " << int(color.a) << ")";

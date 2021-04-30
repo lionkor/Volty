@@ -8,13 +8,6 @@
 
 #include "Rendering/ext_sf.h"
 
-const Color Color::Red(255, 0, 0, 255);
-const Color Color::Green(0, 255, 0, 255);
-const Color Color::Blue(0, 0, 255, 255);
-const Color Color::White(255, 255, 255, 255);
-const Color Color::Black(0, 0, 0, 255);
-const Color Color::Transparent(0, 0, 0, 0);
-
 static std::atomic_size_t s_id_counter;
 
 static Drawable::ID generate_new_id() {
