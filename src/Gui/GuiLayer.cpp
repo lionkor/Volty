@@ -81,13 +81,3 @@ void Widget::on_draw(GameWindow& surface) {
     m_rect.draw(surface);
     m_drawable_text.draw(surface);
 }
-
-std::stringstream Widget::to_stream() const {
-    TS_BEGIN(Object);
-    TS_PROP_M_STR(m_text);
-    TS_PROP_M(m_pos);
-    TS_PROP_M(m_size);
-    TS_PROP_M(m_foreground_color);
-    TS_PROP_M(m_background_color);
-    TS_END();
-}

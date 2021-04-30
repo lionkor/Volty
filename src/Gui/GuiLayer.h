@@ -12,17 +12,12 @@ class Widget;
 
 class GuiLayer : public Object {
     OBJNAME(GuiLayer)
-private:
-    class Application& m_app;
-    std::vector<SharedPtr<Widget>> m_widgets;
-    bool m_enabled { true };
 
 public:
-    GuiLayer(Application& app);
+    explicit GuiLayer(Application& app);
 
-    template<typename T, typename... Args>
-    requires(std::derived_from<T, Widget>)
-        [[nodiscard]] WeakPtr<T> add_widget(Args&&... args);
+    template<std::derived_from<Widget> T, typename... Args>
+    [[nodiscard]] WeakPtr<T> add_widget(Args&&... args);
 
     void on_update(float);
     void on_draw(GameWindow& surface);
@@ -30,22 +25,15 @@ public:
     Application& application() { return m_app; }
 
     virtual void on_mouse_click(const HID::MouseAction& ma);
+
+private:
+    class Application& m_app;
+    std::vector<SharedPtr<Widget>> m_widgets;
+    bool m_enabled { true };
 };
 
 class Widget : public Object {
     OBJNAME(Widget)
-private:
-    GuiLayer& m_gui;
-    vecd m_pos;
-    vecd m_size;
-    Color m_background_color { Color::White };
-    Color m_foreground_color { Color::Black };
-    std::string m_text;
-    sf::Font m_font;
-    Rectangle m_rect;
-    Text m_drawable_text;
-    bool m_resize_to_text { false };
-    bool m_enabled { true };
 
 public:
     Widget(GuiLayer& layer, const vecd& pos, const vecd& size, const std::string& text, const sf::Font& font);
@@ -74,12 +62,22 @@ public:
 
     std::function<void(Widget&, const vecd&)> on_click_callback { nullptr };
 
-    virtual std::stringstream to_stream() const override;
+private:
+    GuiLayer& m_gui;
+    vecd m_pos;
+    vecd m_size;
+    Color m_background_color { Color::White };
+    Color m_foreground_color { Color::Black };
+    std::string m_text;
+    sf::Font m_font;
+    Rectangle m_rect;
+    Text m_drawable_text;
+    bool m_resize_to_text { false };
+    bool m_enabled { true };
 };
 
-template<typename T, typename... Args>
-requires(std::derived_from<T, Widget>)
-    [[nodiscard]] WeakPtr<T> GuiLayer::add_widget(Args&&... args) {
+template<std::derived_from<Widget> T, typename... Args>
+[[nodiscard]] WeakPtr<T> GuiLayer::add_widget(Args&&... args) {
     SharedPtr<T> ptr(new T(*this, std::forward<Args>(args)...));
     m_widgets.push_back(ptr);
     return ptr;
