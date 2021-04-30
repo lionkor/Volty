@@ -96,14 +96,6 @@ add_library(Volty SHARED
         src/Utils/LazyFile.cpp
         src/Utils/ResourceManager.cpp
         src/Utils/stl_ext.cpp
-
-        include/Core.h
-        include/ECS.h
-        include/Volty.h
-        include/Modules.h
-        include/Network.h
-        include/Rendering.h
-        include/Utils.h
         )
 
 target_include_directories(Volty PRIVATE
