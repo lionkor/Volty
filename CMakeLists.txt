@@ -94,6 +94,7 @@ add_library(Volty SHARED
 target_include_directories(Volty PUBLIC
         ${SFML_INCLUDE_DIR}
         ${LUA_INCLUDE_DIR}
+        ${FMT_INCLUDE_DIR}
         ${CMAKE_SOURCE_DIR}/include
         )
 
@@ -103,6 +104,7 @@ target_link_libraries(Volty
         sfml-graphics
         sfml-audio
         tbb
+        ${FMT_LIBRARIES}
         ${LUA_LIBRARIES}
         )
 
