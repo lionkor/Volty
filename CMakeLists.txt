@@ -48,6 +48,14 @@ add_library(Volty SHARED
         src/Network/UDPServer.cpp
         src/Network/UDPClient.cpp
         src/Gui/GuiLayer.cpp
+
+        src/Core.h
+        src/ECS.h
+        src/Engine.h
+        src/Modules.h
+        src/Network.h
+        src/Rendering.h
+        src/Utils.h
         )
 
 target_include_directories(Volty PRIVATE

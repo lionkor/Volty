@@ -53,7 +53,7 @@ protected:
     std::string m_title;
     sf::Color m_clear_color;
     class Application& m_application;
-    std::vector<SharedPtr<GuiLayer>> m_gui_layers; // should be very few
+    std::vector<RefPtr<GuiLayer>> m_gui_layers; // should be very few
 
     // FIXME: We should check somewhere if this is not nullptr anymore
 
@@ -97,7 +97,7 @@ public:
     requires(std::derived_from<T, GuiLayer>)
         [[nodiscard]] WeakPtr<T> add_gui_layer(Args&&...);
 
-    const std::vector<SharedPtr<GuiLayer>>& gui_layers() const {
+    const std::vector<RefPtr<GuiLayer>>& gui_layers() const {
         return m_gui_layers;
     }
 };
@@ -105,7 +105,7 @@ public:
 template<typename T, typename... Args>
 requires(std::derived_from<T, GuiLayer>)
     [[nodiscard]] WeakPtr<T> GameWindow::add_gui_layer(Args&&... args) {
-    SharedPtr<T> ptr(new T(m_application, std::forward<Args>(args)...));
+    RefPtr<T> ptr(new T(m_application, std::forward<Args>(args)...));
     m_gui_layers.push_back(ptr);
     return ptr;
 }

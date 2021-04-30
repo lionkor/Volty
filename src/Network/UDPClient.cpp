@@ -23,7 +23,7 @@ void UDPClient::send(std::array<char, 128>&& message) {
 
 std::array<char, 128> UDPClient::recv() {
     if (m_socket.available() > 0) {
-        SharedPtr<std::array<char, s_max_message_size>> buf = make_shared<std::array<char, s_max_message_size>>();
+        RefPtr<std::array<char, s_max_message_size>> buf = make_refptr<std::array<char, s_max_message_size>>();
         udp::endpoint sender_endpoint;
         m_socket.receive_from(boost::asio::buffer(*buf), sender_endpoint);
         return *buf;

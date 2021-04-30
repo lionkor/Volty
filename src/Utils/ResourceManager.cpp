@@ -67,9 +67,9 @@ Result<Ref<LazyFile>> ResourceManager::get_resource_by_name(const std::string& n
     return result;
 }
 
-Managed<sf::Texture> ResourceManager::load_texture(const std::string& name) {
+OwnPtr<sf::Texture> ResourceManager::load_texture(const std::string& name) {
     if (m_resources.contains(name)) {
-        Managed<sf::Texture> texture = make_managed<sf::Texture>();
+        OwnPtr<sf::Texture> texture = make_ownptr<sf::Texture>();
         LazyFile& file = m_resources.at(name);
         if (file.is_valid()) {
             auto data = file.load();
@@ -88,9 +88,9 @@ Managed<sf::Texture> ResourceManager::load_texture(const std::string& name) {
     return nullptr;
 }
 
-Managed<sf::Font> ResourceManager::load_font(const std::string& name) {
+OwnPtr<sf::Font> ResourceManager::load_font(const std::string& name) {
     if (m_resources.contains(name)) {
-        Managed<sf::Font> font = make_managed<sf::Font>();
+        OwnPtr<sf::Font> font = make_ownptr<sf::Font>();
         LazyFile& file = m_resources.at(name);
         if (file.is_valid()) {
             auto data = file.load();

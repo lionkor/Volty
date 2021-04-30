@@ -6,7 +6,7 @@
 class TileMapComponent : public Component {
     OBJNAME(TileMapComponent)
 private:
-    SharedPtr<TextureAtlas> m_atlas;
+    RefPtr<TextureAtlas> m_atlas;
     TileMap m_grid;
 
 public:

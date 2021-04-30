@@ -55,7 +55,7 @@ void GameWindow::handle_events() {
             }
             m_mouse_pos = sf::Mouse::getPosition(*this);
             HID::MouseAction action = HID::from_sf_mouse_action(m_event);
-            m_application.world().for_each_entity([&](SharedPtr<Entity>& entity_ptr) -> bool {
+            m_application.world().for_each_entity([&](RefPtr<Entity>& entity_ptr) -> bool {
                 entity_ptr->on_mouse_move(*this, action);
                 return true;
             });
@@ -86,7 +86,7 @@ void GameWindow::handle_mouse_button_press() {
         m_mmb_pressed = true;
     }
     HID::MouseAction action = HID::from_sf_mouse_action(m_event);
-    m_application.world().for_each_entity([&](SharedPtr<Entity>& entity_ptr) -> bool {
+    m_application.world().for_each_entity([&](RefPtr<Entity>& entity_ptr) -> bool {
         entity_ptr->on_mouse_down(*this, action);
         return true;
     });
@@ -100,7 +100,7 @@ void GameWindow::handle_mouse_button_release() {
         m_mmb_pressed = false;
     }
     HID::MouseAction action = HID::from_sf_mouse_action(m_event);
-    m_application.world().for_each_entity([&](SharedPtr<Entity>& entity_ptr) -> bool {
+    m_application.world().for_each_entity([&](RefPtr<Entity>& entity_ptr) -> bool {
         entity_ptr->on_mouse_up(*this, action);
         return true;
     });
@@ -108,7 +108,7 @@ void GameWindow::handle_mouse_button_release() {
 
 void GameWindow::handle_key_press() {
     ASSERT(m_event.type == sf::Event::KeyPressed);
-    m_application.world().for_each_entity([&](SharedPtr<Entity>& entity_ptr) -> bool {
+    m_application.world().for_each_entity([&](RefPtr<Entity>& entity_ptr) -> bool {
         entity_ptr->on_key_down(*this, m_event.key.code);
         return true;
     });
@@ -125,7 +125,7 @@ void GameWindow::handle_key_press() {
 
 void GameWindow::handle_key_release() {
     ASSERT(m_event.type == sf::Event::KeyReleased);
-    m_application.world().for_each_entity([&](SharedPtr<Entity>& entity_ptr) -> bool {
+    m_application.world().for_each_entity([&](RefPtr<Entity>& entity_ptr) -> bool {
         entity_ptr->on_key_up(*this, m_event.key.code);
         return true;
     });

@@ -28,8 +28,8 @@ class World
 
 private:
     // FIXME: This should really be a map, but maybe one that isn't slow?
-    std::vector<SharedPtr<Entity>> m_entities;
-    std::vector<SharedPtr<Entity>> m_entities_to_add;
+    std::vector<RefPtr<Entity>> m_entities;
+    std::vector<RefPtr<Entity>> m_entities_to_add;
     std::size_t m_update_interval_ms { 0 };
 
     class Application& m_application;
@@ -56,11 +56,11 @@ public:
     Application& application() { return m_application; }
     const Application& application() const { return m_application; }
 
-    std::vector<SharedPtr<Entity>>& entities() { return m_entities; }
-    const std::vector<SharedPtr<Entity>>& entities() const { return m_entities; }
+    std::vector<RefPtr<Entity>>& entities() { return m_entities; }
+    const std::vector<RefPtr<Entity>>& entities() const { return m_entities; }
 
     /// When fn returns false, the loop breaks.
-    void for_each_entity(std::function<bool(SharedPtr<Entity>&)> fn) {
+    void for_each_entity(std::function<bool(RefPtr<Entity>&)> fn) {
         for (auto& entity_ptr : m_entities) {
             if (!fn(entity_ptr)) {
                 break;

@@ -77,7 +77,7 @@ static constexpr size_t index_3to1(size_t x, size_t y, size_t z, size_t width, s
     return x * depth + y * width * depth + z;
 }
 
-TileMap::TileMap(const vec<size_t>& grid_size, double tile_size, SharedPtr<TextureAtlas> atlas)
+TileMap::TileMap(const vec<size_t>& grid_size, double tile_size, RefPtr<TextureAtlas> atlas)
     : m_varray(sf::PrimitiveType::Quads, grid_size.x * grid_size.y * 4) // x * y * (4 vertices)
     , m_grid_size(grid_size)
     , m_tile_size(tile_size)

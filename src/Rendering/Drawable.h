@@ -141,10 +141,10 @@ private:
     vec<size_t> m_grid_size;
     double m_tile_size;
     vecd m_position;
-    SharedPtr<TextureAtlas> m_atlas;
+    RefPtr<TextureAtlas> m_atlas;
 
 public:
-    TileMap(const vec<size_t>& grid_size, double tile_size, SharedPtr<TextureAtlas> atlas);
+    TileMap(const vec<size_t>& grid_size, double tile_size, RefPtr<TextureAtlas> atlas);
 
     void set_position(const vecd& new_pos) override { m_position = new_pos; }
     void set_rotation(double) override { NOTIMPL; }

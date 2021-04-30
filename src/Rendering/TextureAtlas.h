@@ -9,11 +9,11 @@
 class TextureAtlas final : public Object {
     OBJNAME(TextureAtlas)
 private:
-    Managed<sf::Texture> m_atlas;
+    OwnPtr<sf::Texture> m_atlas;
     size_t m_subtexture_size;
 
 public:
-    TextureAtlas(Managed<sf::Texture> atlas, size_t subtexture_size);
+    TextureAtlas(OwnPtr<sf::Texture> atlas, size_t subtexture_size);
 
     [[nodiscard]] std::pair<vec<float> /* top left */, vec<float> /* bottom right */> subtexture_coords(const vec<size_t>& subtexture_index) const;
 

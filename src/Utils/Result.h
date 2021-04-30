@@ -32,9 +32,9 @@ public:
     auto value() { return m_value.value(); }
     auto value_or(T _else) { return m_value.value_or(_else); }
 
-    bool ok() const { return m_value.has_value(); }
-    bool error() const { return !ok(); }
-    std::string message() const { return m_message; }
+    [[nodiscard]] bool ok() const { return m_value.has_value(); }
+    [[nodiscard]] bool error() const { return !ok(); }
+    [[nodiscard]] std::string message() const { return m_message; }
 
     operator bool() const { return ok(); }
 };

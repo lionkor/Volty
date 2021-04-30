@@ -111,7 +111,7 @@ class SpriteComponent
 private:
     std::string m_texture_name;
     vecd m_sprite_offset;
-    Managed<sf::Texture> m_texture;
+    OwnPtr<sf::Texture> m_texture;
     Rectangle m_drawable;
 
 public:

@@ -1,6 +1,6 @@
 #include "TextureAtlas.h"
 
-TextureAtlas::TextureAtlas(Managed<sf::Texture> atlas, size_t subtexture_size)
+TextureAtlas::TextureAtlas(OwnPtr<sf::Texture> atlas, size_t subtexture_size)
     : m_atlas(std::move(atlas))
     , m_subtexture_size(subtexture_size) {
     atlas = nullptr;

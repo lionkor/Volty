@@ -11,7 +11,7 @@ void World::cleanup_destroyed(DrawSurface& surface) {
     decltype(m_entities)::iterator iter_to_erase;
     do {
         iter_to_erase = std::find_if(m_entities.begin(), m_entities.end(),
-            [](SharedPtr<Entity>& entity_ptr) -> bool {
+            [](RefPtr<Entity>& entity_ptr) -> bool {
                 return entity_ptr->is_marked_destroyed();
             });
         if (iter_to_erase != m_entities.end()) {
@@ -37,13 +37,13 @@ World::World(Application& app)
 }
 
 WeakPtr<Entity> World::add_entity(const vecd& pos) {
-    m_entities_to_add.push_back(std::make_shared<Entity>(*this, pos));
+    m_entities_to_add.push_back(std::make_refptr<Entity>(*this, pos));
     auto entity = WeakPtr<Entity>(m_entities_to_add.back());
     return entity;
 }
 
 WeakPtr<Entity> World::add_entity(const Entity& entity) {
-    m_entities_to_add.push_back(make_shared<Entity>(entity));
+    m_entities_to_add.push_back(make_refptr<Entity>(entity));
     auto e = WeakPtr<Entity>(m_entities_to_add.back());
     return e;
 }

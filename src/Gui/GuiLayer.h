@@ -28,7 +28,7 @@ public:
 
 private:
     class Application& m_app;
-    std::vector<SharedPtr<Widget>> m_widgets;
+    std::vector<RefPtr<Widget>> m_widgets;
     bool m_enabled { true };
 };
 
@@ -78,7 +78,7 @@ private:
 
 template<std::derived_from<Widget> T, typename... Args>
 [[nodiscard]] WeakPtr<T> GuiLayer::add_widget(Args&&... args) {
-    SharedPtr<T> ptr(new T(*this, std::forward<Args>(args)...));
+    RefPtr<T> ptr(new T(*this, std::forward<Args>(args)...));
     m_widgets.push_back(ptr);
     return ptr;
 }

@@ -3,6 +3,8 @@
 
 #include <mutex>
 
+// TODO: rewrite with pairs of T& and unique_lock or shared_lock
+
 template<class T>
 class Mutexed {
 private:
@@ -10,7 +12,7 @@ private:
     T m_value;
 
 public:
-    Mutexed(T&& value)
+    explicit Mutexed(T&& value)
         : m_value(std::move(value)) { }
 
     ~Mutexed() {

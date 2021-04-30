@@ -35,23 +35,19 @@ public:
 
     [[nodiscard]] std::vector<std::uint8_t>* load();
 
-    bool is_valid() const { return m_validation_result.ok(); }
-    std::string validation_error_message() const { return m_validation_result.message(); }
-    std::size_t size_on_disk() const { return m_stat.st_size; }
+    [[nodiscard]] bool is_valid() const { return m_validation_result.ok(); }
+    [[nodiscard]] std::string validation_error_message() const { return m_validation_result.message(); }
+    [[nodiscard]] std::size_t size_on_disk() const { return static_cast<size_t>(m_stat.st_size); }
 
     [[nodiscard]] Result<bool> force_reload();
     [[nodiscard]] Result<bool> restat();
     void force_unload();
 
-    const std::filesystem::path& path() const { return m_path; }
-    std::filesystem::path filename() const { return m_path.filename(); }
+    [[nodiscard]] const std::filesystem::path& path() const { return m_path; }
+    [[nodiscard]] std::filesystem::path filename() const { return m_path.filename(); }
 
     /// Whether the file has changed on disk. update the LazyFile with restat()
-    bool has_changed_on_disk() const;
-
-    // Object interface
-public:
-    virtual std::stringstream to_stream() const override;
+    [[nodiscard]] bool has_changed_on_disk() const;
 };
 
 #endif // LAZYFILE_H

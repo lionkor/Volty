@@ -117,7 +117,7 @@ DerivedComponentT* Entity::fetch_component() {
 template<std::derived_from<Component> DerivedComponentT, typename... Args>
 [[nodiscard]] DerivedComponentT& Entity::add_component(Args&&... args) {
     auto raw_ptr = new DerivedComponentT(*this, std::forward<Args>(args)...);
-    auto comp = SharedPtr<DerivedComponentT>(std::move(raw_ptr));
+    auto comp = RefPtr<DerivedComponentT>(std::move(raw_ptr));
     if (comp->is_unique() && has_component<DerivedComponentT>()) {
         report_error(cst_error_multiple_unique_components_fmt, comp->uuid(), this->uuid(), comp->class_name());
         throw std::runtime_error(fmt::format(cst_error_multiple_unique_components));

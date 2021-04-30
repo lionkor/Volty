@@ -16,10 +16,10 @@ class Application : public Object {
     OBJNAME(Application)
 
 private:
-    Managed<GameWindow> m_window;
-    Managed<World> m_world;
+    OwnPtr<GameWindow> m_window;
+    OwnPtr<World> m_world;
     ResourceManager m_resource_manager;
-    std::vector<SharedPtr<GuiElement>> m_gui_elements;
+    std::vector<RefPtr<GuiElement>> m_gui_elements;
 
 public:
     /// \brief Application
@@ -35,7 +35,7 @@ public:
     ResourceManager& resource_manager() { return m_resource_manager; }
     const ResourceManager& resource_manager() const { return m_resource_manager; }
 
-    std::vector<SharedPtr<GuiElement>>& gui_elements() { return m_gui_elements; }
+    std::vector<RefPtr<GuiElement>>& gui_elements() { return m_gui_elements; }
 
     template<typename... Args>
     [[nodiscard]] WeakPtr<GuiElement> add_gui_element(Args&&... args);
@@ -45,7 +45,7 @@ public:
 
 template<typename... Args>
 [[nodiscard]] WeakPtr<GuiElement> Application::add_gui_element(Args&&... args) {
-    auto elem = make_shared<GuiElement>(*this, std::forward<Args>(args)...);
+    auto elem = make_refptr<GuiElement>(*this, std::forward<Args>(args)...);
     m_gui_elements.push_back(elem);
     return WeakPtr<GuiElement>(elem);
 }
