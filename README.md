@@ -2,7 +2,9 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/lionkor/Volty/badge)](https://www.codefactor.io/repository/github/lionkor/Volty)
 
-A 2D cross-platform game engine written in C++. Supports scripting with Lua and C-linkage DLLs.
+A 2D cross-platform game engine written in C++20. Supports scripting with Lua and C-linkage DLLs.
+
+You'll need a C++ 20 capable compiler.
 
 ## Scripting
 
