@@ -3,14 +3,13 @@
 #include <fstream>
 
 ResourceManager::ResourceManager(const std::filesystem::path& res_file_path)
-    : m_res_file(res_file_path.string())
-    , m_res_base_path(m_res_file.path().parent_path()) {
+    : m_res_base_path(m_res_file.path().parent_path()) {
     if (res_file_path.empty()) {
         report_warning("resfile name empty, might cause confusing errors");
     } else {
         auto parent_path = res_file_path.parent_path();
         if (!std::filesystem::exists(parent_path)) {
-            report_warning("resource folder {} does not exist, attempting to create it");
+            report_warning("resource folder {} does not exist, attempting to create it", parent_path);
             std::error_code ec;
             std::filesystem::create_directories(parent_path, ec);
             if (ec) {
@@ -25,10 +24,12 @@ ResourceManager::ResourceManager(const std::filesystem::path& res_file_path)
                     ok = false;
                 }
                 if (ok) {
+                    m_res_file = LazyFile(res_file_path.string());
                     reload_resfile();
                 }
             }
         } else {
+            m_res_file = LazyFile(res_file_path.string());
             reload_resfile();
         }
     }

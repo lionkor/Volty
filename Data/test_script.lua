@@ -30,7 +30,6 @@ end
 
 function on_mouse_down(mb, x, y)
     if mb == MouseButton.LMB then
-        Engine.log_info("LMB down")
         move = true
         bx = x
         by = y 
@@ -39,7 +38,6 @@ end
 
 function on_mouse_up(mb, x, y)
     if mb == MouseButton.LMB then
-        Engine.log_info("LMB up")
         move = false
     end
 end

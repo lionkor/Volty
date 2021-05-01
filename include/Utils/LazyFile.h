@@ -28,6 +28,7 @@ private:
 
 public:
     explicit LazyFile(const std::string&);
+    LazyFile() = default;
     LazyFile(LazyFile&&) = default;
     LazyFile& operator=(LazyFile&&) = default;
 

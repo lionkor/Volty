@@ -24,3 +24,9 @@ language that supports exporting symbols as C linkage, such as C++/Rust (`extern
 of course, C.
 
 Documentation for this interface coming soon.
+
+## How to Use
+
+*Disclaimer:* Volty has a pretty steep learning curve. If you're a C++ beginner, trying to use this will likely be a challenge.
+
+Please visit the [Wiki](https://github.com/lionkor/Volty/wiki) for tutorials, guides and manuals.
