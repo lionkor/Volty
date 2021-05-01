@@ -35,6 +35,9 @@ void LazyFile::validate() {
 
 Result<bool> LazyFile::restat() {
     Result<bool> result;
+    if (!std::filesystem::exists(m_path)) {
+        return result.set_error("{} doesn't exist", m_path);
+    }
     m_last_time = std::filesystem::last_write_time(m_path);
     m_file_size = std::filesystem::file_size(m_path);
     return result.set_value(true);

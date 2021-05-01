@@ -1,5 +1,6 @@
 ﻿#include "Utils/ResourceManager.h"
 #include "Utils/stl_ext.h"
+#include <fstream>
 
 ResourceManager::ResourceManager(const std::filesystem::path& res_file_path)
     : m_res_file(res_file_path.string())
@@ -7,7 +8,29 @@ ResourceManager::ResourceManager(const std::filesystem::path& res_file_path)
     if (res_file_path.empty()) {
         report_warning("resfile name empty, might cause confusing errors");
     } else {
-        reload_resfile();
+        auto parent_path = res_file_path.parent_path();
+        if (!std::filesystem::exists(parent_path)) {
+            report_warning("resource folder {} does not exist, attempting to create it");
+            std::error_code ec;
+            std::filesystem::create_directories(parent_path, ec);
+            if (ec) {
+                report_error("could not create directory {}: {}", parent_path, ec.message());
+            } else {
+                bool ok = true;
+                try {
+                    std::ofstream os(res_file_path);
+                    os.close();
+                } catch (const std::exception& e) {
+                    report_error("error creating {}: {}", res_file_path, e.what());
+                    ok = false;
+                }
+                if (ok) {
+                    reload_resfile();
+                }
+            }
+        } else {
+            reload_resfile();
+        }
     }
 }
 

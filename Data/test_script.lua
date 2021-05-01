@@ -1,10 +1,10 @@
-ax = 0
-ay = 0
-bx = 0
-by = 0
-move = false
+local ax = 0
+local ay = 0
+local bx = 0
+local by = 0
+local move = false
 
-speed = 5.5
+local speed = 5.5
 
 function update(dt)
     if not move then
@@ -43,3 +43,4 @@ function on_mouse_up(mb, x, y)
         move = false
     end
 end
+

@@ -28,6 +28,7 @@ protected:
 
 public:
     ScriptableComponent(Entity&, const std::string& scriptfile_name);
+    ScriptableComponent(const ScriptableComponent&) = delete;
     ~ScriptableComponent();
 
     virtual void on_update(float) override;

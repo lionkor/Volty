@@ -366,10 +366,12 @@ ScriptableComponent::ScriptableComponent(Entity& e, const std::string& scriptfil
     // load lua standard libraries
     luaL_openlibs(m_lua_state);
 
+
     auto& resman = resource_manager();
     auto maybe_lazyfile = resman.get_resource_by_name(scriptfile_name);
     if (maybe_lazyfile.error()) {
-        report_error("ScriptableComponent failed to load script {}", scriptfile_name);
+        report_error("ScriptableComponent failed to load script {}: ", scriptfile_name, maybe_lazyfile.message());
+        return;
     } else {
         auto* data = maybe_lazyfile.value().get().load();
         m_script_code = std::string(data->begin(), data->end());
