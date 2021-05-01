@@ -11,6 +11,13 @@ You'll need a C++ 20 capable compiler.
 
 See [CONTRIBUTING.md](https://github.com/lionkor/Volty/blob/master/CONTRIBUTING.md) for how to contribute.
 
+## How to Use
+
+*Disclaimer:* Volty has a pretty steep learning curve. If you're a C++ beginner, trying to use this will likely be a challenge.
+
+Please visit the [Wiki](https://github.com/lionkor/Volty/wiki) for tutorials, guides and manuals.
+
+
 ## Scripting
 
 ### Lua
@@ -25,8 +32,3 @@ of course, C.
 
 Documentation for this interface coming soon.
 
-## How to Use
-
-*Disclaimer:* Volty has a pretty steep learning curve. If you're a C++ beginner, trying to use this will likely be a challenge.
-
-Please visit the [Wiki](https://github.com/lionkor/Volty/wiki) for tutorials, guides and manuals.
