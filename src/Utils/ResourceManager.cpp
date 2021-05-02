@@ -3,7 +3,8 @@
 #include <fstream>
 
 ResourceManager::ResourceManager(const std::filesystem::path& res_file_path)
-    : m_res_base_path(m_res_file.path().parent_path()) {
+    : m_res_base_path(std::filesystem::absolute(m_res_file.path()).parent_path()) {
+    report("file path: {}", m_res_file.path())
     if (res_file_path.empty()) {
         report_warning("resfile name empty, might cause confusing errors");
     } else {
@@ -64,6 +65,7 @@ void ResourceManager::reload_resfile() {
         }
         std::string filename(previous_newline, next_newline);
         if (!filename.empty()) {
+            report("base: {}, full: {}", m_res_base_path, m_res_base_path / filename);
             LazyFile file((m_res_base_path / filename).string());
             if (file.is_valid()) {
                 m_resources.insert_or_assign(filename, std::move(file));

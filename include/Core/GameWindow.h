@@ -95,7 +95,7 @@ public:
 
     template<typename T, typename... Args>
     requires(std::derived_from<T, GuiLayer>)
-        [[nodiscard]] WeakPtr<T> add_gui_layer(Args&&...);
+        [[nodiscard]] RefPtr<T> add_gui_layer(Args&&...);
 
     const std::vector<RefPtr<GuiLayer>>& gui_layers() const {
         return m_gui_layers;
@@ -104,7 +104,7 @@ public:
 
 template<typename T, typename... Args>
 requires(std::derived_from<T, GuiLayer>)
-    [[nodiscard]] WeakPtr<T> GameWindow::add_gui_layer(Args&&... args) {
+    [[nodiscard]] RefPtr<T> GameWindow::add_gui_layer(Args&&... args) {
     RefPtr<T> ptr(new T(m_application, std::forward<Args>(args)...));
     m_gui_layers.push_back(ptr);
     return ptr;

@@ -36,16 +36,14 @@ World::World(Application& app)
     m_entities.reserve(1000);
 }
 
-WeakPtr<Entity> World::add_entity(const vecd& pos) {
+RefPtr<Entity> World::add_entity(const vecd& pos) {
     m_entities_to_add.push_back(make_refptr<Entity>(*this, pos));
-    auto entity = WeakPtr<Entity>(m_entities_to_add.back());
-    return entity;
+    return m_entities_to_add.back();
 }
 
-WeakPtr<Entity> World::add_entity(const Entity& entity) {
+RefPtr<Entity> World::add_entity(const Entity& entity) {
     m_entities_to_add.push_back(make_refptr<Entity>(entity));
-    auto e = WeakPtr<Entity>(m_entities_to_add.back());
-    return e;
+    return m_entities_to_add.back();
 }
 
 RayHit World::try_hit(const vec<double>& pos) {

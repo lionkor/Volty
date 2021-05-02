@@ -44,8 +44,8 @@ public:
     virtual ~World() = default;
 
     /// Takes ownership of the passed (new-allocated) pointer `obj`.
-    WeakPtr<Entity> add_entity(const vecd& pos = {});
-    WeakPtr<Entity> add_entity(const Entity& entity);
+    RefPtr<Entity> add_entity(const vecd& pos = {});
+    RefPtr<Entity> add_entity(const Entity& entity);
     /// Generates a Ray at the position, returns the RayHit describing what was hit.
     RayHit try_hit(const vecd& pos);
 

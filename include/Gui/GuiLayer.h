@@ -18,7 +18,7 @@ public:
     explicit GuiLayer(Application& app);
 
     template<std::derived_from<Widget> T, typename... Args>
-    [[nodiscard]] WeakPtr<T> add_widget(Args&&... args);
+    [[nodiscard]] RefPtr<T> add_widget(Args&&... args);
 
     void on_update(float);
     void on_draw(GameWindow& surface);
@@ -78,7 +78,7 @@ private:
 };
 
 template<std::derived_from<Widget> T, typename... Args>
-[[nodiscard]] WeakPtr<T> GuiLayer::add_widget(Args&&... args) {
+[[nodiscard]] RefPtr<T> GuiLayer::add_widget(Args&&... args) {
     RefPtr<T> ptr(new T(*this, std::forward<Args>(args)...));
     m_widgets.push_back(ptr);
     return ptr;

@@ -39,7 +39,7 @@ public:
     /// Adds the Entity as a child, sets its parent pointer,
     /// registers it with the World (no World::add_entity needed).
     template<typename... Args>
-    WeakPtr<Entity> add_child(Args&&... args);
+    RefPtr<Entity> add_child(Args&&... args);
 
     template<std::derived_from<Component> DerivedComponentT>
     bool has_component() const;
@@ -79,16 +79,15 @@ public:
 // templates below, ugly ahead!
 
 template<typename... Args>
-WeakPtr<Entity> Entity::add_child(Args&&... args) {
-    auto weak_ptr = m_world.add_entity(std::forward<Args>(args)...);
+RefPtr<Entity> Entity::add_child(Args&&... args) {
+    auto ptr = m_world.add_entity(std::forward<Args>(args)...);
     // if the entity already has a parent then something is wack
-    auto ptr = weak_ptr.lock();
     ASSERT(!ptr->m_parent);
     ptr->m_parent = this;
     ptr->m_transform.m_parent_transform = &m_transform;
     m_children.push_back(ptr.get());
     report("added child {}", *ptr);
-    return weak_ptr;
+    return ptr;
 }
 void remove_child(Entity* entity);
 
