@@ -1,6 +1,8 @@
 ﻿#include "ECS/Entity.h"
 #include "Core/World.h"
 
+using namespace V;
+
 void Entity::on_cleanup(DrawSurface& surface) {
     // called by the World, at this point m_children is already cleared
     for (auto& comp : m_comps) {

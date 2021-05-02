@@ -6,9 +6,13 @@
 
 using std::size_t;
 
+namespace V {
+
 template<typename T>
-using Ref = std::reference_wrapper<T>;
+using Ref = ::std::reference_wrapper<T>;
 
 #define make_ref std::ref
+
+}
 
 #endif // COMMON_H

@@ -1,5 +1,7 @@
 ﻿#include "Physics/Collider.h"
 
+using namespace V;
+
 Collider::Collider(const Collider::Shape& shape)
     : m_shape(shape) {
 }

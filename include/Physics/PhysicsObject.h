@@ -5,6 +5,8 @@
 #include "PhysicalObject.h"
 #include "Utils/DebugTools.h"
 
+namespace V {
+
 /// PhysicsObject is a Physical Object that is affected by physics (rigid body)
 class PhysicsObject
     : public PhysicalObject {
@@ -21,5 +23,7 @@ public:
 protected:
     void update() override;
 };
+
+}
 
 #endif // PHYSICSOBJNAME_H

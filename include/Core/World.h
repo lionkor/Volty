@@ -16,6 +16,8 @@
 
 #include <deque>
 
+namespace V {
+
 class RayHit;
 class Entity;
 
@@ -71,5 +73,7 @@ public:
     /// Updates the world and calls into the window to update, too.
     void update(GameWindow&, float);
 };
+
+}
 
 #endif // WORLD_H

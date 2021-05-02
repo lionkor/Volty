@@ -16,6 +16,8 @@
 #include "Rendering/GuiElement.h"
 #include "Utils/Managed.h"
 
+namespace V {
+
 class FpsLogger {
 private:
     std::ofstream m_file;
@@ -108,6 +110,8 @@ requires(std::derived_from<T, GuiLayer>)
     RefPtr<T> ptr(new T(m_application, std::forward<Args>(args)...));
     m_gui_layers.push_back(ptr);
     return ptr;
+}
+
 }
 
 #endif // GAMEWINDOW_H

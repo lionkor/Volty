@@ -5,6 +5,8 @@
 
 // TODO: rewrite with pairs of T& and unique_lock or shared_lock
 
+namespace V {
+
 template<class T>
 class Mutexed {
 private:
@@ -35,5 +37,7 @@ public:
 
     T& value() { return m_value; }
 };
+
+}
 
 #endif // MUTEXED_H

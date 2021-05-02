@@ -19,6 +19,8 @@
 #define _PRETTY_FUNCTION __func__
 #endif
 
+namespace V {
+
 static const char* const ANSI_RESET = "\u001b[0m";
 
 static const char* const ANSI_BLACK = "\u001b[30m";
@@ -57,10 +59,10 @@ static const char* const ANSI_UNDERLINE = "\u001b[4m";
 
 namespace impl {
 
-template<typename... Args>
-static inline void report_impl(const char* format, Args&&... args) {
-    fmt::print(format, std::forward<Args>(args)...);
-}
+    template<typename... Args>
+    static inline void report_impl(const char* format, Args&&... args) {
+        fmt::print(format, std::forward<Args>(args)...);
+    }
 
 }
 
@@ -150,6 +152,8 @@ std::ostream& operator<<(std::ostream& os, const ContainerT& container) {
     }
     os << " }";
     return os;
+}
+
 }
 
 #endif // DEBUGTOOLS_H

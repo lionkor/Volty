@@ -5,6 +5,8 @@
 
 #include "Utils/DebugTools.h"
 
+using namespace V;
+
 // C API implementation
 
 static inline vecd to_vecd(C_vec_d v) {

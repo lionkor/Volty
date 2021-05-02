@@ -1,6 +1,8 @@
 ﻿#include "Rendering/Draw.h"
 #include "Core/GameWindow.h"
 
+using namespace V;
+
 DrawSurface::DrawSurface(GameWindow& window)
     : m_window(window) {
     // what the fuck does this do?!

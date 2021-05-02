@@ -3,10 +3,10 @@
 #include <utility>
 
 #include "Core/GameWindow.h"
-
+#include "Rendering/ext_sf.h"
 #include "Utils/Random.h"
 
-#include "Rendering/ext_sf.h"
+using namespace V;
 
 static std::atomic_size_t s_id_counter;
 

@@ -1,5 +1,7 @@
 ﻿#include "Core/Application.h"
 
+using namespace V;
+
 Application::Application(const std::string& title, sf::Vector2u size, bool fullscreen, const std::string& res_file_path)
     : m_window(new GameWindow(*this, title, size, fullscreen))
     , m_world(new World(*this))

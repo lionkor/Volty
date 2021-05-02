@@ -2,6 +2,8 @@
 
 #include "Core/GameWindow.h"
 
+using namespace V;
+
 static inline HID::MouseButton from_sf_mouse_button(sf::Mouse::Button button) {
     // just cast
     return HID::MouseButton(button);

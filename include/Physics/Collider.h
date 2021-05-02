@@ -6,6 +6,8 @@
 #include "Utils/Result.h"
 #include "vec.h"
 
+namespace V {
+
 class Collider
     : public Object {
     OBJNAME(Collider)
@@ -24,5 +26,7 @@ private:
 public:
     explicit Collider(const Collider::Shape& shape = Shape::Rectangle);
 };
+
+}
 
 #endif // COLLIDER_H

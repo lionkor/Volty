@@ -6,6 +6,8 @@
 #include "Utils/Managed.h"
 #include <SFML/Graphics/Texture.hpp>
 
+namespace V {
+
 class TextureAtlas final : public Object {
     OBJNAME(TextureAtlas)
 private:
@@ -24,5 +26,7 @@ public:
         return vec<size_t>(size.x / m_subtexture_size, size.y / m_subtexture_size);
     }
 };
+
+}
 
 #endif // TEXTUREATLAS_H

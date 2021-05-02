@@ -9,6 +9,8 @@
 #include <tuple>
 #include <type_traits>
 
+namespace V {
+
 /// Minimal 2D-vector struct.
 template<typename T>
 struct vec {
@@ -166,5 +168,7 @@ vec<T> operator-(const vec<T>& vec, T val) {
 using vecd = vec<double>;
 using veci = vec<int>;
 using vecu = vec<unsigned>;
+
+}
 
 #endif // VEC_H

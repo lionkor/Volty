@@ -4,6 +4,8 @@
 #include "Rendering/TextureAtlas.h"
 #include "Utils/ResourceManager.h"
 
+using namespace V;
+
 TileMapComponent::TileMapComponent(Entity& e, const vec<size_t>& grid_size, double tile_size, const std::string& texture_atlas_name, size_t subtexture_size)
     : Component(e)
     , m_atlas(make_refptr<TextureAtlas>(resource_manager().load_texture(texture_atlas_name), subtexture_size))

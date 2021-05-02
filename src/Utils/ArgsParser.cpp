@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+using namespace V;
+
 ArgsParser::ArgsParser(int argc, char** argv) {
     m_args.resize(size_t(argc) - 1);
     for (size_t i = 1 /* skip filename */; i < size_t(argc); ++i) {

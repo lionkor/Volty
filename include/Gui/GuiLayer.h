@@ -8,6 +8,8 @@
 
 #include <vector>
 
+namespace V {
+
 class Widget;
 class Application;
 
@@ -82,6 +84,8 @@ template<std::derived_from<Widget> T, typename... Args>
     RefPtr<T> ptr(new T(*this, std::forward<Args>(args)...));
     m_widgets.push_back(ptr);
     return ptr;
+}
+
 }
 
 #endif // GUILAYER_H

@@ -9,6 +9,8 @@
 #include "Rendering/Draw.h"
 #include "Rendering/Drawable.h"
 
+namespace V {
+
 class Entity;
 class ResourceManager;
 class GameWindow;
@@ -129,5 +131,7 @@ public:
 protected:
     void on_cleanup(DrawSurface&) override;
 };
+
+}
 
 #endif // COMPONENT_H

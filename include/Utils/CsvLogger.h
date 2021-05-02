@@ -9,6 +9,8 @@
 #include <queue>
 #include <thread>
 
+namespace V {
+
 class CsvLogger {
 private:
     std::string m_filename;
@@ -31,5 +33,7 @@ public:
         m_queue.emplace(fmt::format("{}\n", value));
     }
 };
+
+}
 
 #endif // CSVLOGGER_H

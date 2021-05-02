@@ -2,9 +2,11 @@
 #include "Utils/stl_ext.h"
 #include <fstream>
 
+using namespace V;
+
 ResourceManager::ResourceManager(const std::filesystem::path& res_file_path)
-    : m_res_base_path(std::filesystem::absolute(m_res_file.path()).parent_path()) {
-    report("file path: {}", m_res_file.path())
+    : m_res_base_path(std::filesystem::absolute(res_file_path).parent_path()) {
+    report("file path: {}", m_res_file.path());
     if (res_file_path.empty()) {
         report_warning("resfile name empty, might cause confusing errors");
     } else {

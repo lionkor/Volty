@@ -1,5 +1,7 @@
 ﻿#include "Utils/CsvLogger.h"
 
+using namespace V;
+
 CsvLogger::CsvLogger(const std::string& filename)
     : m_filename(filename)
     , m_os(filename) {

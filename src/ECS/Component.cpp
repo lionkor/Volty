@@ -3,6 +3,8 @@
 #include "Core/World.h"
 #include "ECS/Entity.h"
 
+using namespace V;
+
 Component::Component(Entity& parent)
     : m_parent(parent)
     , m_resource_manager(m_parent.world().application().resource_manager())

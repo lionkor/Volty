@@ -5,6 +5,8 @@
 
 #include <memory>
 
+namespace V {
+
 template<typename... Args>
 using OwnPtr = std::unique_ptr<Args...>;
 
@@ -17,5 +19,7 @@ using RefPtr = std::shared_ptr<Args...>;
 
 template<typename... Args>
 using WeakPtr = std::weak_ptr<Args...>;
+
+}
 
 #endif // MANAGED_H

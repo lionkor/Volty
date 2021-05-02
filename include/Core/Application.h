@@ -12,6 +12,8 @@
 #include "Utils/ResourceManager.h"
 #include "World.h"
 
+namespace V {
+
 class Application : public Object {
     OBJNAME(Application)
 
@@ -48,6 +50,8 @@ template<typename... Args>
     auto elem = make_refptr<GuiElement>(*this, std::forward<Args>(args)...);
     m_gui_elements.push_back(elem);
     return WeakPtr<GuiElement>(elem);
+}
+
 }
 
 #endif // APPLICATION_H

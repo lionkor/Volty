@@ -6,6 +6,8 @@
 
 #include "vec.h"
 
+namespace V {
+
 /// \brief The IHittable interface
 /// provides support for the inheriting Object to be hit by a Ray
 class IHittable {
@@ -22,5 +24,7 @@ public:
         return layer < other.layer;
     }
 };
+
+}
 
 #endif // IHITTABLE_H

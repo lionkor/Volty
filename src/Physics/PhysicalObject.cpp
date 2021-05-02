@@ -1,6 +1,8 @@
 ﻿#include "Physics/PhysicalObject.h"
 #include "Core/World.h"
 
+using namespace V;
+
 PhysicalObject::PhysicalObject(const vecd& pos, const vecd& size, World& world)
     : m_rectangle(pos, size)
     , m_world(world) {

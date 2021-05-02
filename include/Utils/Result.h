@@ -6,6 +6,8 @@
 #include <string>
 #include <utility>
 
+namespace V {
+
 template<class T>
 class Result {
     std::optional<T> m_value;
@@ -38,5 +40,7 @@ public:
 
     operator bool() const { return ok(); }
 };
+
+}
 
 #endif // RESULT_H

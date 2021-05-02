@@ -10,6 +10,8 @@
 #include <cstdint>
 #include <functional>
 
+namespace V {
+
 struct Color final {
     uint8_t r, g, b, a;
     Color() noexcept = default;
@@ -81,15 +83,6 @@ public:
     virtual DrawablePointerWrapper get_pointer() const final { return { this }; }
     virtual void set_disable_fn(decltype(m_disable_fn) disable_fn) const final { m_disable_fn = disable_fn; }
 };
-
-namespace std {
-template<>
-struct hash<DrawablePointerWrapper> {
-    std::size_t operator()(DrawablePointerWrapper s) const noexcept {
-        return s.ptr->id().value;
-    }
-};
-}
 
 class Rectangle : public Drawable {
     OBJNAME(Rectangle)
@@ -196,5 +189,16 @@ public:
     void set_font(const sf::Font& font) { m_font = font; }
     vecd extents() const;
 };
+
+}
+
+namespace std {
+template<>
+struct hash<V::DrawablePointerWrapper> {
+    std::size_t operator()(V::DrawablePointerWrapper s) const noexcept {
+        return s.ptr->id().value;
+    }
+};
+}
 
 #endif // DRAWABLE_H

@@ -1,5 +1,7 @@
 #include "Rendering/TextureAtlas.h"
 
+using namespace V;
+
 TextureAtlas::TextureAtlas(OwnPtr<sf::Texture> atlas, size_t subtexture_size)
     : m_atlas(std::move(atlas))
     , m_subtexture_size(subtexture_size) {

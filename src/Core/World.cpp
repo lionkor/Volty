@@ -7,6 +7,8 @@
 
 #include <algorithm>
 
+using namespace V;
+
 void World::cleanup_destroyed(DrawSurface& surface) {
     decltype(m_entities)::iterator iter_to_erase;
     do {

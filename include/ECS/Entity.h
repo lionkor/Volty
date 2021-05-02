@@ -12,6 +12,8 @@
 #include "Utils/Constants.h"
 #include "Utils/Managed.h"
 
+namespace V {
+
 /// Monolithic class describing any Entity. Uses composition.
 class Entity final
     : public Object {
@@ -125,6 +127,8 @@ template<std::derived_from<Component> DerivedComponentT, typename... Args>
     Component& ref = *m_comps.back();
     report("Added component: {}", ref);
     return dynamic_cast<DerivedComponentT&>(ref);
+}
+
 }
 
 #endif // GAMEOBJNAME_H

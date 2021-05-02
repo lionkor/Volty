@@ -3,6 +3,8 @@
 
 #include "Component.h"
 
+namespace V {
+
 class TileMapComponent : public Component {
     OBJNAME(TileMapComponent)
 private:
@@ -18,5 +20,7 @@ public:
     TileMap& tilemap() { return m_grid; }
     const TileMap& tilemap() const { return m_grid; }
 };
+
+}
 
 #endif // GRIDCOMPONENT_H

@@ -6,6 +6,8 @@
 #include <any>
 #include <map>
 
+namespace V {
+
 class ArgsParser : public Object {
     OBJNAME(ArgsParser)
 private:
@@ -27,5 +29,7 @@ public:
 
     bool parse();
 };
+
+}
 
 #endif // ARGSPARSER_H

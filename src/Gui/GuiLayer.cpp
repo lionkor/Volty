@@ -1,6 +1,8 @@
 #include "Gui/GuiLayer.h"
 #include "Core/Application.h"
 
+using namespace V;
+
 GuiLayer::GuiLayer(Application& app)
     : m_app(app) {
 }

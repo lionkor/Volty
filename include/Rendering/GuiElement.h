@@ -5,6 +5,8 @@
 #include "Draw.h"
 #include "Physics/vec.h"
 
+namespace V {
+
 class GuiElement
     : public Object {
     OBJNAME(GuiElement)
@@ -25,5 +27,7 @@ public:
     std::function<void(float)> on_update { nullptr };
     std::function<void(DrawSurface&)> on_draw { nullptr };
 };
+
+}
 
 #endif // GUIELEMENT_H

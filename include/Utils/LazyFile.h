@@ -11,6 +11,8 @@
 #include "DebugTools.h"
 #include "Result.h"
 
+namespace V {
+
 class LazyFile
     : public Object {
     OBJNAME(LazyFile)
@@ -51,5 +53,7 @@ public:
     /// Whether the file has changed on disk. update the LazyFile with restat()
     [[nodiscard]] bool has_changed_on_disk() const;
 };
+
+}
 
 #endif // LAZYFILE_H

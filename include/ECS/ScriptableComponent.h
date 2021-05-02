@@ -12,6 +12,8 @@
 #include "Utils/stl_ext.h"
 #include <functional>
 
+namespace V {
+
 class ScriptableComponent : public Component {
     OBJNAME(ScriptableComponent)
 private:
@@ -60,5 +62,7 @@ public:
 
     const std::string& scriptfile_name() const { return m_scriptfile_name; }
 };
+
+}
 
 #endif // SCRIPTABLECOMPONENT_H

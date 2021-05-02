@@ -2,6 +2,8 @@
 #include <cstdio>
 #include <fstream>
 
+using namespace V;
+
 void LazyFile::reset() {
     m_data.clear();
     m_data.shrink_to_fit();

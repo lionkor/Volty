@@ -9,6 +9,8 @@
 #include <SFML/Graphics.hpp>
 #include <map>
 
+namespace V {
+
 class ResourceManager
     : Object {
     OBJNAME(ResourceManager)
@@ -33,5 +35,7 @@ public:
     void operator()() {
     }
 };
+
+}
 
 #endif // RESOURCEMANAGER_H

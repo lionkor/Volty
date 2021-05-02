@@ -3,6 +3,8 @@
 #include <chrono>
 #include <sys/stat.h>
 
+using namespace V;
+
 static inline std::string time_point_as_string(const std::chrono::system_clock::time_point& tp) {
     std::time_t t = std::chrono::system_clock::to_time_t(tp);
     std::string ts = std::ctime(&t);

@@ -24,6 +24,8 @@
 #error "platform not supported, please implement dll/so handling"
 #endif
 
+namespace V {
+
 class GenericModuleComponent : public Component {
     OBJNAME(Component)
 private:
@@ -44,5 +46,7 @@ public:
 
     void on_update(float dt) override;
 };
+
+}
 
 #endif // GENERICMODULECOMPONENT_H

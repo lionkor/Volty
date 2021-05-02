@@ -13,6 +13,8 @@
 #include "Utils/Common.h"
 #include "Utils/DebugTools.h"
 
+namespace V {
+
 class GameWindow;
 
 class DrawSurface {
@@ -36,5 +38,7 @@ public:
 
     void finalize();
 };
+
+}
 
 #endif // DRAW_H

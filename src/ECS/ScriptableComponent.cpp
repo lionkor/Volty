@@ -6,6 +6,8 @@
 
 #include "Rendering/ext_sf.h"
 
+using namespace V;
+
 namespace LuaLib {
 
 static Entity* get_entity(lua_State* L, long long i) {

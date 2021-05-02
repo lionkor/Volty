@@ -3,7 +3,7 @@
 
 #include <concepts>
 
-namespace Math {
+namespace V::Math {
 
 template<std::floating_point FloatT>
 decltype(auto) lerp(FloatT a, FloatT b, FloatT f) {
@@ -16,7 +16,5 @@ decltype(auto) abs(T a) {
 }
 
 }
-
-using namespace Math;
 
 #endif // MATH_H

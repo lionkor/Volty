@@ -8,6 +8,8 @@
 #include "IHittable.h"
 #include "vec.h"
 
+namespace V {
+
 class PhysicalObject;
 
 /// Describes what has been hit, in what order.
@@ -49,5 +51,7 @@ public:
     /// Get the results of the raycast operation. Invalidates this Ray.
     [[nodiscard]] RayHit result() const;
 };
+
+}
 
 #endif // RAY_H

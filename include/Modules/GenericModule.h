@@ -9,7 +9,7 @@
 
 #ifdef INTERNAL
 #include "ECS/Entity.h"
-typedef Entity C_Entity;
+typedef V::Entity C_Entity;
 #else
 typedef void C_Entity;
 #endif // INTERNAL
@@ -35,6 +35,8 @@ typedef struct {
     double x;
     double y;
 } C_vec_d;
+
+// TODO: should use namespacing of some kind
 
 // public API
 /// Gets the position of the entity in the world

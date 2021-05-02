@@ -6,6 +6,8 @@
 #include "Rendering/Draw.h"
 #include "vec.h"
 
+namespace V {
+
 class World;
 
 /// Interface inherited from by all objects in the World.
@@ -62,5 +64,7 @@ public:
     /// Callback called whenever the object is actually hit.
     void on_hit(const vecd&) override;
 };
+
+}
 
 #endif // PHYSICAL_OBJNAME_H
