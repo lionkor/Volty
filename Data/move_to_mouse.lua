@@ -6,10 +6,11 @@ local move = false
 
 local speed = 5.5
 
-function update(dt)
+function update( dt)
     if not move then
         return
     end
+    print(g_entity)
     ax, ay = Entity.position()
     local dirx = bx - ax
     local diry = by - ay

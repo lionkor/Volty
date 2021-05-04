@@ -31,9 +31,9 @@ protected:
 public:
     ScriptableComponent(Entity&, const std::string& scriptfile_name);
     ScriptableComponent(const ScriptableComponent&) = delete;
-    ~ScriptableComponent();
+    ~ScriptableComponent() override;
 
-    virtual void on_update(float) override;
+    void on_update(float) override;
 
     void begin_table();
     void end_table(const std::string& name);

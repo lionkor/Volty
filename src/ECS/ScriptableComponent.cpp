@@ -368,7 +368,6 @@ ScriptableComponent::ScriptableComponent(Entity& e, const std::string& scriptfil
     // load lua standard libraries
     luaL_openlibs(m_lua_state);
 
-
     auto& resman = resource_manager();
     auto maybe_lazyfile = resman.get_resource_by_name(scriptfile_name);
     if (maybe_lazyfile.error()) {
